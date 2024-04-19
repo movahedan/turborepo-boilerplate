@@ -4333,9 +4333,9 @@ typed-array-length@^1.0.6:
     possible-typed-array-names "^1.0.0"
 
 typescript@^5.3.3:
-  version "5.4.5"
-  resolved "https://pkgs.dev.azure.com/LuminusITDigital/_packaging/npm-registry/npm/registry/typescript/-/typescript-5.4.5.tgz#42ccef2c571fdbd0f6718b1d1f5e6e5ef006f611"
-  integrity sha1-QszvLFcf29D2cYsdH15uXvAG9hE=
+  version "5.3.3"
+  resolved "https://pkgs.dev.azure.com/LuminusITDigital/_packaging/npm-registry/npm/registry/typescript/-/typescript-5.3.3.tgz#b3ce6ba258e72e6305ba66f5c9b452aaee3ffe37"
+  integrity sha1-s85roljnLmMFumb1ybRSqu4//jc=
 
 uglify-js@^3.1.4:
   version "3.17.4"
