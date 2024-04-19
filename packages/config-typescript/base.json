@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Base",
+  "compilerOptions": {
+    "strict": true,
+    "allowJs": false,
+    "noEmit": false,
+    "strictNullChecks": true,
+    "pretty": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "rootDir": "../../",
+    "outDir": "../../dist/tsc",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext"
+  }
+}

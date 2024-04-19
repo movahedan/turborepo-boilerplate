@@ -1,19 +1,17 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
-  "compilerOptions": {
-    "outDir": "dist/tsc",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
-  },
+  "extends": "@repo/config-typescript/nextjs.json",
   "include": [
     "next-env.d.ts",
     "next.config.js",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "dist/build/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "incremental": true
+  }
 }

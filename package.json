@@ -2,18 +2,17 @@
   "name": "my-clicky-game",
   "private": true,
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "type-check": "turbo type-check",
+    "build": "turbo build --no-cache --",
+    "dev": "turbo dev --no-cache --",
+    "lint": "turbo lint --no-cache --",
+    "type-check": "turbo type-check --no-cache --",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "jest": "^29.7.0",
     "prettier": "^3.2.5",
     "turbo": "latest",
-    "typescript": "^5.3.3"
+    "typescript": "5.3.3"
   },
   "engines": {
     "node": ">=18"

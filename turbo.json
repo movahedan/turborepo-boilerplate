@@ -7,13 +7,15 @@
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^lint"],
+      "cache": false
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
     "type-check": {
+      "cache": false,
       "dependsOn": ["^type-check"],
       "outputs": ["dist/tsc/**"]
     }
