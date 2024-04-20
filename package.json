@@ -5,14 +5,12 @@
     "build": "turbo build --no-cache --",
     "dev": "turbo dev --no-cache --",
     "lint": "turbo lint --no-cache --",
+    "test": "turbo test --no-cache --",
     "type-check": "turbo type-check --no-cache --",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "jest": "^29.7.0",
-    "prettier": "^3.2.5",
-    "turbo": "latest",
-    "typescript": "5.3.3"
+    "turbo": "latest"
   },
   "engines": {
     "node": ">=18"

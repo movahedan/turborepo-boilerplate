@@ -1,9 +1,15 @@
-export function Code({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
+import type { BaseHTMLAttributes, ReactNode } from "react";
+
+export type CodeProps = BaseHTMLAttributes<HTMLElement> & {
+  dataTestId?: string;
+  children: ReactNode;
   className?: string;
-}): JSX.Element {
-  return <code className={className}>{children}</code>;
+};
+
+export function Code({ dataTestId, children, className }: CodeProps) {
+  return (
+    <code className={className} data-testid={dataTestId}>
+      {children}
+    </code>
+  );
 }

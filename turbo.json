@@ -1,6 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
+  "globalPassThroughEnv": ["NODE_ENV", "BUNDLE_ANALYZER"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
@@ -13,6 +14,10 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "test": {
+      "cache": false,
+      "dependsOn": ["^test"]
     },
     "type-check": {
       "cache": false,
