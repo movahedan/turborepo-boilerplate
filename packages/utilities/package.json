@@ -1,0 +1,23 @@
+{
+  "name": "@repo/utilities",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./*": "./src/*/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "test": "jest --color",
+    "type-check": "tsc --project ./tsconfig.json"
+  },
+  "dependencies": {
+    "tailwind-merge": "^2.3.0"
+  },
+  "devDependencies": {
+    "@repo/config-eslint": "*",
+    "@repo/config-jest": "*",
+    "@repo/config-storybook": "*",
+    "@repo/config-tailwind": "*",
+    "@repo/config-typescript": "*"
+  }
+}

@@ -44,5 +44,17 @@ module.exports = {
         'import/no-default-export': 'off',
       },
     },
+    {
+      files: ['*.ts?(x)'],
+      rules: {
+        'no-console': ['error', { allow: ['error'] }]
+      },
+    },
+    {
+      files: ['*.test.ts?(x)'],
+      rules: {
+        '@typescript-eslint/no-empty-function': "off"
+      },
+    },
   ],
 };
