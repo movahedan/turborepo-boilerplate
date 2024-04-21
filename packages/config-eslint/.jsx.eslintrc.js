@@ -3,8 +3,8 @@ module.exports = {
   extends: [
     require.resolve('@vercel/style-guide/eslint/react'),
     'plugin:jsx-a11y/recommended',
-    'plugin:tailwind/recommended',
-    './.jsx.jest.eslintrc.js'
+    'plugin:tailwindcss/recommended',
+    'plugin:jsx-a11y/recommended',
   ],
   globals: {
     React: true,

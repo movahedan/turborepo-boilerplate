@@ -1,6 +1,17 @@
+const { resolve } = require('node:path');
+const project = resolve(process.cwd(), 'tsconfig.json');
+
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   plugins: ['import'],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project,
+      },
+    },
+  },
   rules: {
     'import/first': 'error',
     'import/no-cycle': 'error',
@@ -56,13 +67,5 @@ module.exports = {
         warnOnUnassignedImports: false,
       },
     ],
-  },
-  overrides: [
-    {
-      files: ['turbo/**', 'jest.config.ts', 'tailwind.config.ts'],
-      rules: {
-        'import/no-default-export': 'off',
-      },
-    },
-  ],
+  }
 };
