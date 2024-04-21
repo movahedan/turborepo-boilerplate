@@ -1,9 +1,7 @@
-import { Button } from "@repo/ui/button";
-import { Card } from "@repo/ui/card";
-import { Code } from "@repo/ui/code";
-import Image from "next/image";
+import { Button, Card, Code } from '@repo/ui/atoms';
+import Image from 'next/image';
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 
 function Gradient({
   conic,
@@ -23,32 +21,32 @@ function Gradient({
         className,
       ]
         .filter(Boolean)
-        .join(" ")}
+        .join(' ')}
     />
   );
 }
 
 const LINKS = [
   {
-    title: "Docs",
-    href: "https://turbo.build/repo/docs",
-    description: "Find in-depth information about Turborepo features and API.",
+    title: 'Docs',
+    href: 'https://turbo.build/repo/docs',
+    description: 'Find in-depth information about Turborepo features and API.',
   },
   {
-    title: "Learn",
-    href: "https://turbo.build/repo/docs/handbook",
-    description: "Learn more about monorepos with our handbook.",
+    title: 'Learn',
+    href: 'https://turbo.build/repo/docs/handbook',
+    description: 'Learn more about monorepos with our handbook.',
   },
   {
-    title: "Templates",
-    href: "https://turbo.build/repo/docs/getting-started/from-example",
-    description: "Choose from over 15 examples and deploy with a single click.",
+    title: 'Templates',
+    href: 'https://turbo.build/repo/docs/getting-started/from-example',
+    description: 'Choose from over 15 examples and deploy with a single click.',
   },
   {
-    title: "Deploy",
-    href: "https://vercel.com/new",
+    title: 'Deploy',
+    href: 'https://vercel.com/new',
     description:
-      "Instantly deploy your Turborepo to a shareable URL with Vercel.",
+      'Instantly deploy your Turborepo to a shareable URL with Vercel.',
   },
 ];
 
@@ -66,7 +64,7 @@ export default function Page(): JSX.Element {
             rel="noopener noreferrer"
             target="_blank"
           >
-            By{" "}
+            By{' '}
             <Image
               alt="Vercel Logo"
               className={styles.vercelLogo}
@@ -79,7 +77,7 @@ export default function Page(): JSX.Element {
         </div>
       </div>
 
-      <Button className="px-3 text-sm font-bold text-white bg-blue-500 rounded py-1.5 hover:bg-blue-600">
+      <Button className="rounded bg-blue-500 px-3 py-1.5 text-sm font-bold text-white hover:bg-blue-600">
         Click me!
       </Button>
 
@@ -91,7 +89,7 @@ export default function Page(): JSX.Element {
                 alt=""
                 height={614}
                 src="circles.svg"
-                style={{ pointerEvents: "none" }}
+                style={{ pointerEvents: 'none' }}
                 width={614}
               />
             </div>
@@ -105,7 +103,7 @@ export default function Page(): JSX.Element {
                 height={120}
                 priority
                 src="turborepo.svg"
-                style={{ pointerEvents: "none" }}
+                style={{ pointerEvents: 'none' }}
                 width={120}
               />
             </div>

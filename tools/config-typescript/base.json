@@ -4,7 +4,7 @@
   "compilerOptions": {
     "strict": true,
     "allowJs": false,
-    "noEmit": false,
+    "noEmit": true,
     "strictNullChecks": true,
     "pretty": true,
     "forceConsistentCasingInFileNames": true,

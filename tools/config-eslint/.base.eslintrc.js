@@ -2,7 +2,7 @@ const { resolve } = require('node:path');
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  ignorePatterns: ['.*.js', 'node_modules/', 'dist/'],
+  ignorePatterns: ['.eslintrc.js', 'node_modules/', 'dist/'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: resolve(process.cwd(), 'tsconfig.json'),

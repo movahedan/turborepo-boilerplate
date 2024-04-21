@@ -3,17 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./button": "./src/button.tsx",
-    "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx"
+    "./*": "./src/*/index.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "test": "jest --color",
     "type-check": "tsc --project ./tsconfig.json",
+    "storybook": "storybook dev -p 6200 --quiet",
+    "storybook-build": "storybook build -o dist/build/storybook",
     "generate:component": "turbo gen react-component"
   },
   "dependencies": {
+    "@mui/base": "^5.0.0-beta.40",
     "@tailwindcss/forms": "^0.5.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -22,14 +23,9 @@
   "devDependencies": {
     "@repo/config-eslint": "*",
     "@repo/config-jest": "*",
+    "@repo/config-storybook": "*",
     "@repo/config-tailwind": "*",
     "@repo/config-typescript": "*",
-    "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^15.0.2",
-    "@testing-library/user-event": "^14.5.2",
-    "@turbo/gen": "^1.12.4",
-    "@types/node": "20.12.7",
-    "@types/react": "18.2.79",
-    "@types/react-dom": "18.2.25"
+    "@turbo/gen": "^1.13.2"
   }
 }

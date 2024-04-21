@@ -1,18 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: './dist/build/.next',
   swcMinify: true,
   reactStrictMode: true,
 };
 
-const enableBundleAnalyzer =
-  process.env.BUNDLE_ANALYZER === "true" &&
-  process.env.NODE_ENV === "production";
+const isBundleAnalyzerEnabled =
+  process.env.BUNDLE_ANALYZER === 'true' &&
+  process.env.NODE_ENV === 'production';
 
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: enableBundleAnalyzer,
-  analyzerMode: "json",
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: isBundleAnalyzerEnabled,
+  analyzerMode: 'json',
 });
 
-module.exports = enableBundleAnalyzer
+module.exports = isBundleAnalyzerEnabled
   ? withBundleAnalyzer(nextConfig)
   : nextConfig;

@@ -1,10 +1,10 @@
-import { jestConfigJsdom } from "@repo/config-jest/jest.config.jsdom";
+import { jestConfigJsdom } from '@repo/config-jest/jest.config.jsdom';
 
-import type { Config } from "jest";
+import type { Config } from 'jest';
 
 const jestConfig: Config = {
   ...jestConfigJsdom,
-  collectCoverageFrom: ["src/**/*.{ts,tsx}", "!src/**/*.stories.tsx"],
+  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.stories.tsx'],
 };
 
 export default jestConfig;

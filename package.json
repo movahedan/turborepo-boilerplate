@@ -1,23 +1,48 @@
 {
   "name": "my-clicky-game",
   "private": true,
+  "engines": {
+    "node": ">=18",
+    "npm": ">=10.2.4"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tools/*"
+  ],
   "scripts": {
+    "prepare": "husky",
     "build": "turbo build --no-cache --",
     "dev": "turbo dev --no-cache --",
     "lint": "turbo lint --no-cache --",
     "test": "turbo test --no-cache --",
     "type-check": "turbo type-check --no-cache --",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "storybook": "turbo storybook",
+    "storybook-build": "turbo storybook-build",
+    "clean": "npm exec --workspaces -c 'rm -rf node_modules .next .turbo coverage dist compiled build build-storybook' && rm -rf node_modules"
+  },
+  "dependencies": {
+    "next": "14.1.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "turbo": "latest"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "yarn@1.22.21",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+    "@storybook/addon-essentials": "8.0.8",
+    "@storybook/addon-webpack5-compiler-swc": "1.0.2",
+    "@storybook/manager-api": "8.0.8",
+    "@storybook/nextjs": "8.0.8",
+    "@storybook/react": "8.0.8",
+    "@storybook/theming": "8.0.8",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^15.0.2",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "20.12.7",
+    "@types/react": "18.2.79",
+    "@types/react-dom": "18.2.25",
+    "autoprefixer": "10.4.19",
+    "husky": "9.0.11",
+    "storybook": "8.0.8",
+    "turbo": "latest",
+    "typescript": "5.3.3"
+  }
 }

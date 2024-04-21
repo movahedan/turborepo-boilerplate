@@ -8,21 +8,28 @@
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
-      "dependsOn": ["^lint"],
-      "cache": false
+      "dependsOn": ["^lint"]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
     "test": {
-      "cache": false,
       "dependsOn": ["^test"]
     },
     "type-check": {
-      "cache": false,
       "dependsOn": ["^type-check"],
       "outputs": ["dist/tsc/**"]
+    },
+    "storybook": {
+      "dependsOn": ["^build"]
+    },
+    "storybook-build": {
+      "dependsOn": ["^lint", "^type-check"],
+      "outputs": ["dist/build/storybook/**"]
+    },
+    "update-dependencies": {
+      "cache": false
     }
   }
 }
