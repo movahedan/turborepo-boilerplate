@@ -1,4 +1,4 @@
-import type { AnchorHTMLAttributes, ReactNode } from "react";
+import type { AnchorHTMLAttributes, ReactNode } from 'react';
 
 export type CardProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;

@@ -1,4 +1,4 @@
-import type { BaseHTMLAttributes, ReactNode } from "react";
+import type { BaseHTMLAttributes, ReactNode } from 'react';
 
 export type CodeProps = BaseHTMLAttributes<HTMLElement> & {
   dataTestId?: string;
