@@ -1,27 +1,25 @@
 import { Button, Card, Code } from '@repo/ui/atoms';
 import Image from 'next/image';
 
-import styles from './page.module.css';
+import { styles } from './page.styles';
+
+import type { CSSProperties } from 'react';
 
 function Gradient({
-  conic,
-  className,
+  style,
   small,
 }: {
   small?: boolean;
-  conic?: boolean;
-  className?: string;
+  style?: CSSProperties;
 }): JSX.Element {
   return (
     <span
-      className={[
-        styles.gradient,
-        conic ? styles.glowConic : undefined,
-        small ? styles.gradientSmall : styles.gradientLarge,
-        className,
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      style={{
+        ...styles.gradient,
+        ...styles.glowConic,
+        ...(small ? styles.gradientSmall : styles.gradientLarge),
+        ...style,
+      }}
     />
   );
 }
@@ -52,11 +50,11 @@ const LINKS = [
 
 export default function Page(): JSX.Element {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
+    <main style={styles.main}>
+      <div style={styles.description}>
         <p>
           examples/basic&nbsp;
-          <Code className={styles.code}>web</Code>
+          <Code style={styles.code}>web</Code>
         </p>
         <div>
           <a
@@ -67,10 +65,10 @@ export default function Page(): JSX.Element {
             By{' '}
             <Image
               alt="Vercel Logo"
-              className={styles.vercelLogo}
               height={24}
               priority
               src="/vercel.svg"
+              style={styles.vercelLogo}
               width={100}
             />
           </a>
@@ -81,10 +79,10 @@ export default function Page(): JSX.Element {
         Click me!
       </Button>
 
-      <div className={styles.hero}>
-        <div className={styles.heroContent}>
-          <div className={styles.logos}>
-            <div className={styles.circles}>
+      <div style={styles.hero}>
+        <div style={styles.heroContent}>
+          <div style={styles.logos}>
+            <div style={styles.circles}>
               <Image
                 alt=""
                 height={614}
@@ -93,11 +91,11 @@ export default function Page(): JSX.Element {
                 width={614}
               />
             </div>
-            <div className={styles.logoGradientContainer}>
-              <Gradient className={styles.logoGradient} conic small />
+            <div style={styles.logoGradientContainer}>
+              <Gradient small style={styles.logoGradient} />
             </div>
 
-            <div className={styles.logo}>
+            <div style={styles.logo}>
               <Image
                 alt="Turborepo"
                 height={120}
@@ -108,10 +106,10 @@ export default function Page(): JSX.Element {
               />
             </div>
           </div>
-          <Gradient className={styles.backgroundGradient} conic />
-          <div className={styles.turborepoWordmarkContainer}>
+          <Gradient style={styles.backgroundGradient} />
+          <div style={styles.turborepoWordmarkContainer}>
             <svg
-              className={styles.turborepoWordmark}
+              style={styles.turborepoWordmark}
               viewBox="0 0 506 50"
               width={200}
               xmlns="http://www.w3.org/2000/svg"
@@ -131,9 +129,9 @@ export default function Page(): JSX.Element {
         </div>
       </div>
 
-      <div className={styles.grid}>
+      <div style={styles.grid}>
         {LINKS.map(({ title, href, description }) => (
-          <Card className={styles.card} href={href} key={title} title={title}>
+          <Card href={href} key={title} style={styles.card} title={title}>
             {description}
           </Card>
         ))}

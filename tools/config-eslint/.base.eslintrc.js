@@ -39,7 +39,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['turbo/**', 'jest.config.ts', 'tailwind.config.ts', '*.stories.tsx'],
+      files: ['turbo/**', '*.config.ts', '*.stories.tsx', 'app/**/page.tsx', 'app/**/{page,layout,error,global-error,loading,not-found}.tsx'],
       rules: {
         'import/no-default-export': 'off',
       },

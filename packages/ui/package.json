@@ -6,6 +6,7 @@
     "./*": "./src/*/index.ts"
   },
   "scripts": {
+    "build": "tsup",
     "lint": "eslint . --max-warnings 0",
     "test": "jest --color",
     "type-check": "tsc --project ./tsconfig.json",

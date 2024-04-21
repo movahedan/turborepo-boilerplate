@@ -18,6 +18,7 @@ export const jestConfigBase: Config = {
       'ts-jest',
       {
         useESM: true,
+        tsconfig: '<rootDir>/tsconfig.json'
       },
     ],
   },

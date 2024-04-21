@@ -1,0 +1,11 @@
+{
+  // "extends": "@repo/config-typescript/react-library.json",
+  // "compilerOptions": {
+  //   "noEmit": true
+  // },
+  // "include": [".", ".eslintrc.js", ".storybook/**/*"],
+  // "exclude": ["node_modules", ".turbo", "dist"]
+  "extends": "@repo/config-typescript/react-library.json",
+  "include": ["**/*.ts", "**/*.tsx", "./postcss.config.js", "tsconfig.prod.json"],
+  "exclude": ["node_modules", "dist"]
+}

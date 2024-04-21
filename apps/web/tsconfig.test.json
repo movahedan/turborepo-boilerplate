@@ -1,0 +1,8 @@
+{
+  "extends": "@repo/config-typescript/nextjs.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [".", ".eslintrc.js", ".storybook/**/*"],
+  "exclude": ["node_modules", "dist", ".turbo", ".next"]
+}
