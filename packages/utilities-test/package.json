@@ -1,0 +1,19 @@
+{
+  "name": "@repo/utilities-test",
+  "version": "0.0.0",
+  "exports": {
+    "./*": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint --report-unused-disable-directives --max-warnings 0 .",
+    "lint-fix": "eslint --fix .",
+    "type-check": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@repo/config-eslint": "*",
+    "@repo/config-jest": "*",
+    "@repo/config-storybook": "*",
+    "@repo/config-tailwind": "*",
+    "@repo/config-typescript": "*"
+  }
+}

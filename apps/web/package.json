@@ -13,13 +13,15 @@
     "storybook-build": "storybook build -o dist/build/storybook"
   },
   "dependencies": {
-    "@repo/ui": "*"
+    "@repo/ui": "*",
+    "@repo/intl-router": "*"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.2.2",
     "@repo/config-eslint": "*",
     "@repo/config-jest": "*",
     "@repo/config-tailwind": "*",
-    "@repo/config-typescript": "*"
+    "@repo/config-typescript": "*",
+    "@repo/utilities-test": "*"
   }
 }

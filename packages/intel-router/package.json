@@ -1,10 +1,8 @@
 {
-  "name": "@repo/intel-router",
+  "name": "@repo/intl-router",
   "version": "0.0.0",
   "private": true,
-  "exports": {
-    "./*": "./src/*/index.ts"
-  },
+  "main": "./src/index.ts",
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "type-check": "tsc --project ./tsconfig.json"

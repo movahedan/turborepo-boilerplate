@@ -1,12 +1,18 @@
-import { render, screen } from '@testing-library/react';
+import * as nextNavigation from 'next/navigation';
 
 import page from './page';
 
+jest.mock('next/navigation', () => ({
+  ...jest.requireActual('next/navigation'),
+  redirect: jest.fn(),
+}));
+
 describe('<Page />', () => {
   test('should render successfully', () => {
-    render(page());
+    const spyRedirect = jest.spyOn(nextNavigation, 'redirect');
 
-    const pageElement = screen.getByText('examples/basic');
-    expect(pageElement).toBeInTheDocument();
+    page();
+
+    expect(spyRedirect).toHaveBeenCalledWith('/en');
   });
 });
