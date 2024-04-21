@@ -15,11 +15,14 @@
     "build": "turbo build --no-cache --",
     "dev": "turbo dev --no-cache --",
     "lint": "turbo lint --no-cache --",
+    "lint-staged": "lint-staged",
+    "lint-commit": "commitlint",
     "test": "turbo test --no-cache --",
     "type-check": "turbo type-check --no-cache --",
     "storybook": "turbo storybook",
     "storybook-build": "turbo storybook-build",
-    "clean": "npm exec --workspaces -c 'rm -rf node_modules .next .turbo coverage dist compiled build build-storybook' && rm -rf node_modules"
+    "clean": "npm exec --workspaces -c 'rm -rf node_modules .next .turbo coverage dist compiled build build-storybook' && rm -rf node_modules",
+    "update-dependencies": "turbo update-dependencies && npx npm-check-updates -u"
   },
   "dependencies": {
     "next": "14.1.1",
@@ -27,6 +30,8 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "19.2.1",
+    "@commitlint/config-conventional": "19.1.0",
     "@storybook/addon-essentials": "8.0.8",
     "@storybook/addon-webpack5-compiler-swc": "1.0.2",
     "@storybook/manager-api": "8.0.8",
@@ -40,9 +45,15 @@
     "@types/react": "18.2.79",
     "@types/react-dom": "18.2.25",
     "autoprefixer": "10.4.19",
-    "husky": "9.0.11",
     "storybook": "8.0.8",
     "turbo": "latest",
-    "typescript": "5.3.3"
+    "tsup": "8.0.2",
+    "commitizen": "4.3.0",
+    "husky": "9.0.11",
+    "lint-staged": "15.2.2",
+    "postcss": "8.4.38",
+    "ts-jest": "29.1.2",
+    "ts-node": "10.9.2",
+    "typescript": "5.4.3"
   }
 }
