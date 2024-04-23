@@ -1,32 +1,19 @@
-import { notFound } from '@repo/intl-router';
-import * as envs from '@repo/utilities/envs';
 import { render, screen } from '@testing-library/react';
+import { notFound } from 'next/navigation';
 
 import Layout, { generateMetadata, generateStaticParams } from './layout';
 
-jest.mock('@repo/utilities/envs', () => ({
-  envs: jest.fn(),
-}));
+jest.mock('../../../public/locales/en.json', () => ({ default: {} }));
+jest.mock('../../../public/locales/nl.json', () => ({ default: {} }));
 
+jest.mock('next/navigation');
 jest.mock('next-intl/server', () => ({
   ...jest.requireActual('next-intl/server'),
   unstable_setRequestLocale: jest.fn(),
   getTranslations: jest.fn().mockResolvedValue(() => 'title'),
 }));
 
-jest.mock('@repo/intl-router', () => ({
-  ...jest.requireActual('@repo/intl-router'),
-  notFound: jest.fn(),
-}));
-
-jest.mock('../../public/locales/en.json', () => ({ default: {} }));
-jest.mock('../../public/locales/nl.json', () => ({ default: {} }));
-
 describe('<Layout />', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   test('renders children with NextIntlProvider', async () => {
     const layout = await Layout({
       params: { locale: 'en' },
@@ -42,9 +29,6 @@ describe('<Layout />', () => {
       children: <div data-testid="test-child">Test Child</div>,
     });
     render(layout);
-
-    // Verify that unstable_setRequestLocale is called with the provided locale
-    // expect(unstableSetRequestLocale).toHaveBeenCalledWith('en');
 
     const testChild = await screen.findByTestId('test-child');
     expect(testChild).toBeInTheDocument();
@@ -62,7 +46,17 @@ describe('<Layout />', () => {
 });
 
 describe('generateMetadata', () => {
-  const spyEnvs = jest.spyOn(envs, 'envs');
+  const oldEnv = process.env;
+
+  beforeEach(() => {
+    jest.resetModules();
+    jest.clearAllMocks();
+    process.env = { ...oldEnv };
+  });
+
+  afterAll(() => {
+    process.env = oldEnv;
+  });
 
   const expectedMetadata = {
     title: 'title',
@@ -89,16 +83,12 @@ describe('generateMetadata', () => {
     },
   };
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   test('returns expected metadata with undefined values', async () => {
-    spyEnvs.mockReturnValue({
+    process.env = {
       NODE_ENV: 'production',
-      BUNDLE_ANALYZER: false,
+      BUNDLE_ANALYZER: 'false',
       NEXT_PUBLIC_BASE_URL: '',
-    });
+    };
 
     const expected = {
       ...expectedMetadata,
@@ -110,11 +100,11 @@ describe('generateMetadata', () => {
   });
 
   test('returns expected metadata values', async () => {
-    spyEnvs.mockReturnValue({
+    process.env = {
       NODE_ENV: 'production',
-      BUNDLE_ANALYZER: false,
+      BUNDLE_ANALYZER: 'false',
       NEXT_PUBLIC_BASE_URL: 'https://localhost:3000',
-    });
+    };
 
     const expected = {
       ...expectedMetadata,

@@ -1,5 +1,6 @@
+import nextJest from 'next/jest';
+
 import { jestConfigJsdom } from '@repo/config-jest/jest.config.jsdom';
-import nextJest from 'next/jest.js';
 
 import type { Config } from 'jest';
 
@@ -17,7 +18,7 @@ const config: Config = {
       statements: 90,
     },
   },
-  collectCoverageFrom: ['app/**/*.{ts,tsx}', '!**/*.stories.tsx'],
+  collectCoverageFrom: ['./src/**/*.{ts,tsx}', '!**/*.stories.tsx'],
 };
 
 const jestConfig = createJestConfig(config);

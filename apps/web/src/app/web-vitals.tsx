@@ -1,7 +1,8 @@
 'use client';
 
-import { envs } from '@repo/utilities/envs';
 import { useReportWebVitals } from 'next/web-vitals';
+
+import { envs } from '@repo/utilities/envs';
 
 export function WebVitals() {
   useReportWebVitals((metric) => {

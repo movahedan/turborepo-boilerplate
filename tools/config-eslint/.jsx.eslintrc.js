@@ -14,6 +14,15 @@ module.exports = {
     node: true,
     browser: true,
   },
+  rules: {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": [
+      "error",
+      {
+        "additionalHooks": "(useState|useEffect)"
+      }
+    ]
+  },
   overrides: [
     {
       files: ['*.js?(x)', '*.ts?(x)'],

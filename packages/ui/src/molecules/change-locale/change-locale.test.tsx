@@ -1,30 +1,26 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import * as nextNavigation from 'next/navigation';
-import * as nextIntel from 'next-intl';
+import { screen, fireEvent } from '@testing-library/react';
+import { useLocale } from 'next-intl';
+
+import { usePathname } from '@repo/intl-router';
+import { renderWithLocale } from '@repo/utilities-test';
 
 import { ChangeLocale } from './change-locale';
 
 jest.mock('next-intl', () => ({
+  ...jest.requireActual('next-intl'),
   useLocale: jest.fn(),
 }));
-
+jest.mock('@repo/intl-router', () => ({
+  ...jest.requireActual('@repo/intl-router'),
+  usePathname: jest.fn(),
+}));
 jest.mock('next/navigation', () => ({
   ...jest.requireActual('next/navigation'),
-  usePathname: jest.fn(),
-  useSearchParams: jest.fn(),
-}));
-
-const spyUsePathname = jest
-  .spyOn(nextNavigation, 'usePathname')
-  .mockImplementation(() => '/en');
-jest
-  .spyOn(nextNavigation, 'useSearchParams')
-  // @ts-expect-error
-  .mockImplementation(() => ({
+  useSearchParams: jest.fn().mockImplementation(() => ({
     get: () => ({ lang: 'en' }),
     toString: () => 'param=value',
-  }));
-const spyUseLocale = jest.spyOn(nextIntel, 'useLocale');
+  })),
+}));
 
 describe('changeLocale', () => {
   beforeEach(() => {
@@ -32,20 +28,20 @@ describe('changeLocale', () => {
   });
 
   test('should render with correct URL for changing locale', () => {
-    spyUseLocale.mockReturnValueOnce('en');
-    spyUsePathname.mockReturnValueOnce('/en/some-page');
+    (useLocale as jest.Mock).mockReturnValueOnce('en');
+    (usePathname as jest.Mock).mockReturnValueOnce('/some-page');
 
-    render(<ChangeLocale />);
+    renderWithLocale(<ChangeLocale />);
 
     const linkElement = screen.getByLabelText('Change locale to nl');
     expect(linkElement).toHaveAttribute('href', '/nl/some-page?param=value');
   });
 
   test('should change locale when clicked', () => {
-    spyUseLocale.mockReturnValueOnce('nl');
-    spyUsePathname.mockReturnValueOnce('/nl/some-page');
+    (useLocale as jest.Mock).mockReturnValueOnce('nl');
+    (usePathname as jest.Mock).mockReturnValueOnce('/some-page');
 
-    render(<ChangeLocale />);
+    renderWithLocale(<ChangeLocale />);
 
     const linkElement = screen.getByLabelText('Change locale to en');
     fireEvent.click(linkElement);

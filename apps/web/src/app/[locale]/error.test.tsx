@@ -1,4 +1,4 @@
-import { renderWithLocale } from '@repo/utilities-test/render-with-locale';
+import { renderWithLocale } from '@repo/utilities-test';
 
 import Error from './error';
 

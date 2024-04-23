@@ -1,11 +1,13 @@
-import { Link, routes } from '@repo/intl-router';
-import { Button } from '@repo/ui/atoms';
-import { ChangeLocale } from '@repo/ui/molecules';
 import {
   getTranslations,
   unstable_setRequestLocale as unstableSetRequestLocale,
 } from 'next-intl/server';
 import { Suspense } from 'react';
+
+import { Link, routes } from '@repo/intl-router';
+
+import { Button } from '@repo/ui/atoms';
+import { ChangeLocale } from '@repo/ui/molecules';
 
 import type { Locales } from '@repo/intl-router';
 

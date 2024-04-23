@@ -5,12 +5,12 @@ const p = path.relative(process.cwd(), "./");
 console.log(p);
 
 export const jestConfigBase: Config = {
+  preset: 'ts-jest', // or other ESM presets
   roots: ['<rootDir>/'],
   modulePaths: ['<rootDir>/'],
   moduleDirectories: ['node_modules'],
   coverageDirectory: "<rootDir>/dist/test/coverage",
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
-  preset: 'ts-jest', // or other ESM presets
   transform: {
     // '^.+\\.[tj]sx?$' to process js/ts with `ts-jest`
     // '^.+\\.m?[tj]sx?$' to process js/ts/mjs/mts with `ts-jest`

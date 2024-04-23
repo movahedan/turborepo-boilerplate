@@ -1,9 +1,10 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-import { Link, routes, useRouter } from '@repo/intl-router';
+import { routes } from '@repo/intl-router';
 import { errorHandlerApp } from '@repo/utilities/error-handlers';
 
 import { Button } from '@repo/ui/atoms';
@@ -13,8 +14,7 @@ export interface ErrorTemplateProps {
   reset?: () => void;
 }
 
-export function ErrorTemplate({ error, reset }: ErrorTemplateProps) {
-  const t = useTranslations();
+export default function ErrorTemplate({ error, reset }: ErrorTemplateProps) {
   const router = useRouter();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function ErrorTemplate({ error, reset }: ErrorTemplateProps) {
       <p>
         {typeof error === 'string'
           ? error
-          : error.message || error.digest || t('common.unexpected-error')}
+          : error.message || error.digest || 'An unexpected error ocurred.'}
       </p>
 
       <div className="mx-auto mt-2 inline-flex space-x-1">
@@ -36,7 +36,7 @@ export function ErrorTemplate({ error, reset }: ErrorTemplateProps) {
               reset?.();
             }}
           >
-            {t('common.try-again')}
+            Try again
           </Button>
         )}
         <Button
@@ -44,10 +44,10 @@ export function ErrorTemplate({ error, reset }: ErrorTemplateProps) {
             router.refresh();
           }}
         >
-          {t('common.reload')}
+          Reload
         </Button>
         <Link href={routes.index()}>
-          <Button>{t('common.go-home')}</Button>
+          <Button>Go Home</Button>
         </Link>
       </div>
     </div>

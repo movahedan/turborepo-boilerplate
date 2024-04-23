@@ -1,9 +1,11 @@
 'use client';
 
 // Do not use @repo/intl-router since at this point there's no locale
-import { routes } from '@repo/intl-router';
-import { Button } from '@repo/ui/atoms';
 import Link from 'next/link';
+
+import { routes } from '@repo/intl-router';
+
+import { Button } from '@repo/ui/atoms';
 
 // Render the default Next.js 404 page when a route
 // is requested that doesn't match the middleware and

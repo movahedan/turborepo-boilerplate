@@ -1,3 +1,16 @@
+const createBundleAnalyzer = require('@next/bundle-analyzer');
+const createNextIntlPlugin = require('next-intl/plugin');
+
+const isBundleAnalyzerEnabled =
+  process.env.BUNDLE_ANALYZER === 'true' &&
+  process.env.NODE_ENV === 'production';
+
+const withNextIntl = createNextIntlPlugin();
+const withBundleAnalyzer = createBundleAnalyzer({
+  enabled: isBundleAnalyzerEnabled,
+  analyzerMode: 'json',
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: './dist/build/.next',
@@ -5,18 +18,8 @@ const nextConfig = {
   reactStrictMode: true,
 };
 
-const isBundleAnalyzerEnabled =
-  process.env.BUNDLE_ANALYZER === 'true' &&
-  process.env.NODE_ENV === 'production';
-
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: isBundleAnalyzerEnabled,
-  analyzerMode: 'json',
-});
-const withNextIntl = require('next-intl/plugin')('./i18n.ts');
-
-const nextConfigWithNextIntl = withNextIntl(nextConfig);
+const composedConfigs = withNextIntl(nextConfig);
 
 module.exports = isBundleAnalyzerEnabled
-  ? withBundleAnalyzer(nextConfigWithNextIntl)
-  : nextConfigWithNextIntl;
+  ? withBundleAnalyzer(composedConfigs)
+  : composedConfigs;

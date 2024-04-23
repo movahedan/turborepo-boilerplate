@@ -5,6 +5,7 @@ const project = resolve(process.cwd(), 'tsconfig.json');
 module.exports = {
   plugins: ['import'],
   settings: {
+    'import/internal-regex': '^(?:@repo/)',
     'import/resolver': {
       typescript: {
         alwaysTryTypes: true,
@@ -56,10 +57,10 @@ module.exports = {
         ],
         pathGroups: [
           {
-            pattern: '@repo',
+            pattern: '@repo/ui/*',
             group: 'internal',
             position: 'after',
-          },
+          }
         ],
         pathGroupsExcludedImportTypes: ['builtin', 'external'],
         'newlines-between': 'always',
@@ -67,5 +68,5 @@ module.exports = {
         warnOnUnassignedImports: false,
       },
     ],
-  }
+  },
 };

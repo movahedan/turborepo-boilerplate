@@ -1,6 +1,7 @@
-import * as envs from '@repo/utilities/envs';
 import { render } from '@testing-library/react';
 import * as webVitals from 'next/web-vitals';
+
+import * as envs from '@repo/utilities/envs';
 
 import { WebVitals } from './web-vitals';
 

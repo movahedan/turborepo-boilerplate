@@ -1,14 +1,12 @@
-import {
-  notFound,
-  locales,
-  metadataAlternatesLanguage,
-} from '@repo/intl-router';
-import { envs } from '@repo/utilities/envs';
+import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import {
   getTranslations,
   unstable_setRequestLocale as unstableSetRequestLocale,
 } from 'next-intl/server';
+
+import { locales, metadataAlternatesLanguage } from '@repo/intl-router';
+import { envs } from '@repo/utilities/envs';
 
 import type { Locales } from '@repo/intl-router';
 import type { Metadata } from 'next';

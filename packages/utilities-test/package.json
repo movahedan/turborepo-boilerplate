@@ -1,9 +1,7 @@
 {
   "name": "@repo/utilities-test",
   "version": "0.0.0",
-  "exports": {
-    "./*": "./src/index.ts"
-  },
+  "main": "src/index.ts",
   "scripts": {
     "lint": "eslint --report-unused-disable-directives --max-warnings 0 .",
     "lint-fix": "eslint --fix .",

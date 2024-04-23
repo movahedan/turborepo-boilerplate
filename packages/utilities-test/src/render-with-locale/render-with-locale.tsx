@@ -1,10 +1,12 @@
 import { render } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 
+import { defaultLocale } from '@repo/intl-router';
+
 import type { RenderOptions, RenderResult } from '@testing-library/react';
 import type { ComponentProps } from 'react';
 
-export type RenderWithTheme = (
+export type RenderWithLocale = (
   elm: React.ReactElement,
   renderOptions?: RenderOptions,
   nextIntlClientProviderProps?: Omit<
@@ -13,16 +15,19 @@ export type RenderWithTheme = (
   >,
 ) => RenderResult;
 
-export const renderWithLocale: RenderWithTheme = (
+export const renderWithLocale: RenderWithLocale = (
   component,
   renderOptions,
   nextIntlClientProviderProps = {
     messages: {},
-    locale: 'en',
+    locale: defaultLocale,
   },
 ) => {
   const wrapper: RenderOptions['wrapper'] = ({ children }) => (
-    <NextIntlClientProvider {...nextIntlClientProviderProps}>
+    <NextIntlClientProvider
+      {...nextIntlClientProviderProps}
+      locale={nextIntlClientProviderProps.locale || defaultLocale}
+    >
       {children}
     </NextIntlClientProvider>
   );

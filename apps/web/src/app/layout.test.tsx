@@ -1,10 +1,4 @@
-import * as envs from '@repo/utilities/envs';
-
 import Layout, { generateViewport, generateMetadata } from './layout';
-
-jest.mock('@repo/utilities/envs', () => ({
-  envs: jest.fn(),
-}));
 
 describe('<Layout />', () => {
   test('should render successfully', () => {
@@ -29,7 +23,16 @@ describe('generateViewport', () => {
 });
 
 describe('generateMetadata', () => {
-  const spyEnvs = jest.spyOn(envs, 'envs');
+  const oldEnv = process.env;
+
+  beforeEach(() => {
+    jest.resetModules();
+    process.env = { ...oldEnv };
+  });
+
+  afterAll(() => {
+    process.env = oldEnv;
+  });
 
   const expectedMetadata = {
     title: 'my-clicky-game',
@@ -92,16 +95,12 @@ describe('generateMetadata', () => {
     ],
   };
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   test('returns expected metadata with undefined values', () => {
-    spyEnvs.mockReturnValue({
+    process.env = {
       NODE_ENV: 'production',
-      BUNDLE_ANALYZER: false,
+      BUNDLE_ANALYZER: 'false',
       NEXT_PUBLIC_BASE_URL: '',
-    });
+    };
 
     const expected = {
       ...expectedMetadata,
@@ -112,11 +111,11 @@ describe('generateMetadata', () => {
   });
 
   test('returns expected metadata values', () => {
-    spyEnvs.mockReturnValue({
+    process.env = {
       NODE_ENV: 'production',
-      BUNDLE_ANALYZER: false,
+      BUNDLE_ANALYZER: 'false',
       NEXT_PUBLIC_BASE_URL: 'https://localhost:3000',
-    });
+    };
 
     const expected = {
       ...expectedMetadata,

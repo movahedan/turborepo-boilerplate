@@ -1,7 +1,8 @@
-import { renderWithLocale } from '@repo/utilities-test/src/render-with-locale';
 import { screen } from '@testing-library/react';
 
-import NotFound from './not-found';
+import { renderWithLocale } from '@repo/utilities-test/src/render-with-locale';
+
+import NotFound from './page';
 
 describe('notFound', () => {
   const renderComponent = () =>

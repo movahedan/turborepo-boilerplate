@@ -1,6 +1,8 @@
-import { Link, routes } from '@repo/intl-router';
-import { Button } from '@repo/ui/atoms';
 import { useTranslations } from 'next-intl';
+
+import { Link, routes } from '@repo/intl-router';
+
+import { Button } from '@repo/ui/atoms';
 
 // Note that `app/[locale]/[...rest]/page.tsx`
 // is necessary for this page to render.

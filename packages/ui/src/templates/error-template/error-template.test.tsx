@@ -1,13 +1,13 @@
-import { renderWithLocale } from '@repo/utilities-test/render-with-locale';
 import { screen, fireEvent } from '@testing-library/react';
+
+import { renderWithLocale } from '@repo/utilities-test';
 
 import { ErrorTemplate } from './error-template';
 
 import type { ErrorTemplateProps } from './error-template';
 
 jest.mock('next/navigation', () => ({
-  useParams: jest.fn(),
-  usePathname: jest.fn(),
+  ...jest.requireActual('next/navigation'),
   useRouter: jest.fn().mockImplementation(() => ({
     refresh: () => {
       console.info('refresh');
@@ -16,8 +16,12 @@ jest.mock('next/navigation', () => ({
 }));
 
 describe('<ErrorTemplate />', () => {
-  const spyConsole = jest.spyOn(console, 'info').mockImplementation(() => {});
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   jest.spyOn(console, 'error').mockImplementation(() => {});
+  const spyConsole = jest.spyOn(console, 'info').mockImplementation(() => {});
 
   const renderComponent = (props: Partial<ErrorTemplateProps> = {}) =>
     renderWithLocale(
