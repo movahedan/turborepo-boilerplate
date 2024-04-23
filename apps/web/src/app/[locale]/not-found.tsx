@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-import { Link, routes } from '@repo/intl-router';
+import { Link, routes } from '@repo/router';
 
 import { Button } from '@repo/ui/atoms';
 

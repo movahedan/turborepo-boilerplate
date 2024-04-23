@@ -4,12 +4,12 @@ import {
 } from 'next-intl/server';
 import { Suspense } from 'react';
 
-import { Link, routes } from '@repo/intl-router';
+import { Link, routes } from '@repo/router';
 
 import { Button } from '@repo/ui/atoms';
 import { ChangeLocale } from '@repo/ui/molecules';
 
-import type { Locales } from '@repo/intl-router';
+import type { Locales } from '@repo/router';
 
 export interface HomePageProps {
   params: { locale: Locales };

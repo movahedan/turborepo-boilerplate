@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
-import { Link, locales, usePathname } from '@repo/intl-router';
+import { Link, locales, usePathname } from '@repo/router';
 import { classNames } from '@repo/utilities/string';
 
 export interface ChangeLocaleProps {

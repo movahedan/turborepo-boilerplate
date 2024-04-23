@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@repo/ui": "*",
-    "@repo/intl-router": "*"
+    "@repo/router": "*"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.2.2",

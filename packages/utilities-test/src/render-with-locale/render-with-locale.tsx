@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 
-import { defaultLocale } from '@repo/intl-router';
+import { defaultLocale } from '@repo/router';
 
 import type { RenderOptions, RenderResult } from '@testing-library/react';
 import type { ComponentProps } from 'react';

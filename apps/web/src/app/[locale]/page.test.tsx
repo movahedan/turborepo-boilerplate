@@ -17,8 +17,8 @@ jest.mock('next-intl/server', () => ({
   unstable_setRequestLocale: jest.fn(),
 }));
 
-jest.mock('@repo/intl-router', () => ({
-  ...jest.requireActual('@repo/intl-router'),
+jest.mock('@repo/router', () => ({
+  ...jest.requireActual('@repo/router'),
   Link: jest.fn(({ href }) => <div>{href}</div>),
   routes: {
     d: { index: () => '/dashboard' },

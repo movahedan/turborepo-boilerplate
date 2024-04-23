@@ -1,5 +1,5 @@
 {
-  "name": "@repo/intl-router",
+  "name": "@repo/router",
   "version": "0.0.0",
   "private": true,
   "main": "./src/index.ts",

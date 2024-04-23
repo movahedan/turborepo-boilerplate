@@ -5,12 +5,11 @@ import {
   unstable_setRequestLocale as unstableSetRequestLocale,
 } from 'next-intl/server';
 
-import { locales, metadataAlternatesLanguage } from '@repo/intl-router';
+import { getMessages, locales, metadataAlternatesLanguage } from '@repo/router';
 import { envs } from '@repo/utilities/envs';
 
-import type { Locales } from '@repo/intl-router';
+import type { Locales } from '@repo/router';
 import type { Metadata } from 'next';
-import type { AbstractIntlMessages } from 'next-intl';
 import type { ReactNode } from 'react';
 
 export interface LocaleLayoutProps {
@@ -25,10 +24,7 @@ export default async function LocaleLayout({
   if (!locales.includes(locale)) notFound();
   unstableSetRequestLocale(locale as string);
 
-  const messages = await import(`../../public/locales/${locale}.json`)
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- It's just a json
-    .then((json) => json.default as AbstractIntlMessages)
-    .catch(() => notFound());
+  const messages = await getMessages(locale).catch(() => notFound());
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

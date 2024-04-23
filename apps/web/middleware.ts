@@ -1,6 +1,6 @@
 import createMiddleware from 'next-intl/middleware';
 
-import { pathnames, locales, defaultLocale } from '@repo/intl-router';
+import { pathnames, locales, defaultLocale } from '@repo/router';
 
 const middleware = createMiddleware({
   defaultLocale,

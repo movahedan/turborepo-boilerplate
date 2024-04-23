@@ -1,7 +1,7 @@
 import { screen, fireEvent } from '@testing-library/react';
 import { useLocale } from 'next-intl';
 
-import { usePathname } from '@repo/intl-router';
+import { usePathname } from '@repo/router';
 import { renderWithLocale } from '@repo/utilities-test';
 
 import { ChangeLocale } from './change-locale';
@@ -10,8 +10,8 @@ jest.mock('next-intl', () => ({
   ...jest.requireActual('next-intl'),
   useLocale: jest.fn(),
 }));
-jest.mock('@repo/intl-router', () => ({
-  ...jest.requireActual('@repo/intl-router'),
+jest.mock('@repo/router', () => ({
+  ...jest.requireActual('@repo/router'),
   usePathname: jest.fn(),
 }));
 jest.mock('next/navigation', () => ({

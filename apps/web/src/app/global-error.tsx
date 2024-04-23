@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-import { routes } from '@repo/intl-router';
+import { routes } from '@repo/router';
 import { errorHandlerApp } from '@repo/utilities/error-handlers';
 
 import { Button } from '@repo/ui/atoms';

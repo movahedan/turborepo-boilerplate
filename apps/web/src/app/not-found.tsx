@@ -1,9 +1,9 @@
 'use client';
 
-// Do not use @repo/intl-router since at this point there's no locale
+// Do not use @repo/router since at this point there's no locale
 import Link from 'next/link';
 
-import { routes } from '@repo/intl-router';
+import { routes } from '@repo/router';
 
 import { Button } from '@repo/ui/atoms';
 

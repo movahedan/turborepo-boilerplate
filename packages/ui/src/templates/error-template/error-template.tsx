@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 
-import { Link, routes, useRouter } from '@repo/intl-router';
+import { Link, routes, useRouter } from '@repo/router';
 import { errorHandlerApp } from '@repo/utilities/error-handlers';
 
 import { Button } from '@repo/ui/atoms';

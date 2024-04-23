@@ -3,9 +3,6 @@ import { notFound } from 'next/navigation';
 
 import Layout, { generateMetadata, generateStaticParams } from './layout';
 
-jest.mock('../../../public/locales/en.json', () => ({ default: {} }));
-jest.mock('../../../public/locales/nl.json', () => ({ default: {} }));
-
 jest.mock('next/navigation');
 jest.mock('next-intl/server', () => ({
   ...jest.requireActual('next-intl/server'),
