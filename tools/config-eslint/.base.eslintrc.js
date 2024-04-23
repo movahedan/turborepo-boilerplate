@@ -25,6 +25,7 @@ module.exports = {
   ],
   rules: {
     'prettier/prettier': ['error', require('@vercel/style-guide/prettier')],
+    'no-console': ['error', { allow: ['error', 'info'] }],
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/naming-convention': [
       'error',
@@ -36,36 +37,21 @@ module.exports = {
       },
     ],
     // off rules
-    '@typescript-eslint/no-unsafe-call': 'off',
-    '@typescript-eslint/no-unsafe-assignment': 'off',
-    '@typescript-eslint/no-unsafe-member-access': 'off',
-    '@typescript-eslint/no-unsafe-return': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    'import/no-extraneous-dependencies': 'off'
   },
   overrides: [
     {
-      files: [
-        'turbo/**',
-        '*.config.ts',
-        '*.stories.tsx',
-        'i18n.ts',
-        '{page,layout,error,global-error,loading,not-found}.tsx',
-      ],
+      files: ['turbo/**', '*.d.ts', '*.config.ts', '*.stories.tsx'],
       rules: {
         'import/no-default-export': 'off',
       },
     },
     {
-      files: ['*.ts?(x)'],
-      rules: {
-        'no-console': ['error', { allow: ['error', 'info'] }],
-      },
-    },
-    {
       files: ['*.test.ts?(x)'],
       rules: {
+        '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/no-empty-function': 'off',
-        '@typescript-eslint/ban-ts-comment': 'off',
       },
     },
   ],

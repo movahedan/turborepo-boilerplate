@@ -26,6 +26,7 @@ export default async function LocaleLayout({
   unstableSetRequestLocale(locale as string);
 
   const messages = await import(`../../public/locales/${locale}.json`)
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- It's just a json
     .then((json) => json.default as AbstractIntlMessages)
     .catch(() => notFound());
 

@@ -22,13 +22,5 @@ module.exports = {
         "additionalHooks": "(useState|useEffect)"
       }
     ]
-  },
-  overrides: [
-    {
-      files: ['*.js?(x)', '*.ts?(x)'],
-      rules: {
-        'jsx-a11y/anchor-is-valid': 'off',
-      },
-    },
-  ],
+  }
 };
