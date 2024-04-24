@@ -1,32 +1,14 @@
-import { screen } from '@testing-library/react';
+import { notFound } from 'next/navigation';
 
-import { renderWithLocale } from '@repo/utilities-test/src/render-with-locale';
+import CatchAllPage from './page';
 
-import NotFound from './page';
+jest.mock('next/navigation');
+jest.mocked(notFound);
 
 describe('notFound', () => {
-  const renderComponent = () =>
-    renderWithLocale(
-      <NotFound />,
-      {},
-      {
-        locale: 'en',
-        messages: {
-          common: { 'go-home': 'Go Home' },
-          app: {
-            '/404': {
-              status: '404',
-              title: 'Not Found!',
-            },
-          },
-        },
-      },
-    );
+  test('it should call the notFound function from next/navigation', () => {
+    CatchAllPage();
 
-  test('renders the 404 page with "Not Found!" message and a "Go Home" button', () => {
-    renderComponent();
-
-    const goHomeButton = screen.getByRole('button', { name: 'Go Home' });
-    expect(goHomeButton).toBeInTheDocument();
+    expect(notFound).toHaveBeenCalled();
   });
 });
