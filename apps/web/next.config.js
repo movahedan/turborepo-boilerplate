@@ -5,7 +5,7 @@ const isBundleAnalyzerEnabled =
   process.env.BUNDLE_ANALYZER === 'true' &&
   process.env.NODE_ENV === 'production';
 
-const withNextIntl = createNextIntlPlugin('../../packages/router/src/i18n.ts');
+const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 const withBundleAnalyzer = createBundleAnalyzer({
   enabled: isBundleAnalyzerEnabled,
   analyzerMode: 'json',

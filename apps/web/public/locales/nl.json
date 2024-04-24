@@ -10,7 +10,6 @@
     "submit": "Indienen",
     "unexpected-error": "Er is een onverwachte fout opgetreden."
   },
-  "components": {},
   "app": {
     "/404": {
       "status": "404",

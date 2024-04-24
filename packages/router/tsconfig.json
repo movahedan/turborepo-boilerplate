@@ -1,6 +1,6 @@
 {
   "extends": "@repo/config-typescript/react-library.json",
-  "include": ["**/*.ts", "**/*.tsx", "src/i18n.ts"],
+  "include": ["**/*.ts", "**/*.tsx"],
   "compilerOptions": {
     "declaration": false,
     "declarationMap": false

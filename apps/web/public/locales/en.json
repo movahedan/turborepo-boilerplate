@@ -12,7 +12,6 @@
     "updated": "Updated",
     "unexpected-error": "An unexpected error ocurred."
   },
-  "components": {},
   "app": {
     "/404": {
       "status": "404",

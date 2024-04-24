@@ -5,8 +5,12 @@ import {
   unstable_setRequestLocale as unstableSetRequestLocale,
 } from 'next-intl/server';
 
-import { getMessages, locales, metadataAlternatesLanguage } from '@repo/router';
+import { locales, metadataAlternatesLanguage } from '@repo/router';
 import { envs } from '@repo/utilities/envs';
+
+import { getMessages as getUiMessages } from '@repo/ui/get-messages';
+
+import { getMessages } from '../../get-messages';
 
 import type { Locales } from '@repo/router';
 import type { Metadata } from 'next';
@@ -24,10 +28,14 @@ export default async function LocaleLayout({
   if (!locales.includes(locale)) notFound();
   unstableSetRequestLocale(locale as string);
 
+  const uiMessages = await getUiMessages(locale).catch(() => notFound());
   const messages = await getMessages(locale).catch(() => notFound());
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider
+      locale={locale}
+      messages={{ ...messages, ...uiMessages }}
+    >
       {children}
     </NextIntlClientProvider>
   );
