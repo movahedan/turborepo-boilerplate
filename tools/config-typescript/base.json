@@ -18,8 +18,8 @@
     "rootDir": "../../",
     "outDir": "../../dist/tsc",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "target": "ESNext"
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ES6"
   }
 }

@@ -3,7 +3,7 @@ module.exports = {
   root: true,
   extends: ["../../tools/config-eslint/react.eslintrc.js"],
   parserOptions: {
-    project: "./tsconfig.json",
+    project: true,
     tsconfigRootDir: __dirname,
   }
 };

@@ -4,5 +4,6 @@ module.exports = {
   extends: ["../../tools/config-eslint/next.eslintrc.js"],
   parserOptions: {
     project: true,
+    tsconfigRootDir: __dirname,
   },
 };

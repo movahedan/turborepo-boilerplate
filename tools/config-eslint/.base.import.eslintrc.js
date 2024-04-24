@@ -4,6 +4,11 @@ const project = resolve(process.cwd(), 'tsconfig.json');
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   plugins: ['import'],
+  extends: [
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+  ],
   settings: {
     'import/internal-regex': '^(?:@repo/)',
     'import/resolver': {
