@@ -1,8 +1,4 @@
 import { Config } from 'jest';
-import path from "path";
-
-const p = path.relative(process.cwd(), "./");
-console.log(p);
 
 export const jestConfigBase: Config = {
   preset: 'ts-jest', // or other ESM presets
@@ -10,6 +6,7 @@ export const jestConfigBase: Config = {
   modulePaths: ['<rootDir>/'],
   moduleDirectories: ['node_modules'],
   coverageDirectory: "<rootDir>/dist/test/coverage",
+  setupFilesAfterEnv: ["@repo/config-jest/jest.setup.base.ts"],
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
   transform: {
     // '^.+\\.[tj]sx?$' to process js/ts with `ts-jest`
