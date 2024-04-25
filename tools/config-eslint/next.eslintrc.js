@@ -9,8 +9,8 @@ module.exports = {
   overrides: [
     {
       files: [
-        'src/app/?(page)?(layout)?(error)?(global-error)?(loading)?(not-found).ts?(x)',
-        'src/app/**/?(page)?(layout)?(error)?(global-error)?(loading)?(not-found).ts?(x)',
+        'src/app/?(page)?(layout)?(error)?(global-error)?(loading)?(not-found)?(sitemap).ts?(x)',
+        'src/app/**/?(page)?(layout)?(error)?(global-error)?(loading)?(not-found)?(sitemap).ts?(x)',
         'middleware.ts',
         'i18n.ts'
       ],
