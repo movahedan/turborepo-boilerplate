@@ -4,10 +4,12 @@
     "description": "my-clicky-game"
   },
   "common": {
+    "close": "Sluiten",
     "try-again": "Probeer opnieuw",
     "go-home": "Ga naar huis",
     "reload": "Herladen",
-    "submit": "Indienen",
+    "submit": "Verzenden",
+    "updated": "Bijgewerkt",
     "unexpected-error": "Er is een onverwachte fout opgetreden."
   },
   "app": {
