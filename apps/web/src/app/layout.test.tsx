@@ -1,4 +1,11 @@
+import { envs } from '@repo/utilities/envs';
+
 import Layout, { generateViewport, generateMetadata } from './layout';
+
+jest.mock('@repo/utilities/envs', () => ({
+  envs: jest.fn(),
+}));
+const mockedEnvs = jest.mocked(envs);
 
 describe('<Layout />', () => {
   test('should render successfully', () => {
@@ -23,17 +30,6 @@ describe('generateViewport', () => {
 });
 
 describe('generateMetadata', () => {
-  const oldEnv = process.env;
-
-  beforeEach(() => {
-    jest.resetModules();
-    process.env = { ...oldEnv };
-  });
-
-  afterAll(() => {
-    process.env = oldEnv;
-  });
-
   const expectedMetadata = {
     title: 'my-clicky-game',
     description: 'my-clicky-game',
@@ -96,11 +92,11 @@ describe('generateMetadata', () => {
   };
 
   test('returns expected metadata with undefined values', () => {
-    process.env = {
+    mockedEnvs.mockImplementationOnce(() => ({
       NODE_ENV: 'production',
-      BUNDLE_ANALYZER: 'false',
+      BUNDLE_ANALYZER: false,
       NEXT_PUBLIC_BASE_URL: '',
-    };
+    }));
 
     const expected = {
       ...expectedMetadata,
@@ -111,15 +107,15 @@ describe('generateMetadata', () => {
   });
 
   test('returns expected metadata values', () => {
-    process.env = {
+    mockedEnvs.mockImplementationOnce(() => ({
       NODE_ENV: 'production',
-      BUNDLE_ANALYZER: 'false',
-      NEXT_PUBLIC_BASE_URL: 'https://localhost:3000',
-    };
+      BUNDLE_ANALYZER: false,
+      NEXT_PUBLIC_BASE_URL: 'https://domain.com',
+    }));
 
     const expected = {
       ...expectedMetadata,
-      metadataBase: new URL('https://localhost:3000'),
+      metadataBase: new URL('https://domain.com'),
     };
 
     expect(generateMetadata()).toEqual(expected);

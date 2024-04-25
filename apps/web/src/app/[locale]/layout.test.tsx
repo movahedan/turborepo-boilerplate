@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { notFound } from 'next/navigation';
 
+import { envs } from '@repo/utilities/envs';
+
 import Layout, { generateMetadata, generateStaticParams } from './layout';
 
 jest.mock('next/navigation');
@@ -9,6 +11,11 @@ jest.mock('next-intl/server', () => ({
   unstable_setRequestLocale: jest.fn(),
   getTranslations: jest.fn().mockResolvedValue(() => 'title'),
 }));
+
+jest.mock('@repo/utilities/envs', () => ({
+  envs: jest.fn(),
+}));
+const mockedEnvs = jest.mocked(envs);
 
 describe('<Layout />', () => {
   test('renders children with NextIntlProvider', async () => {
@@ -43,18 +50,6 @@ describe('<Layout />', () => {
 });
 
 describe('generateMetadata', () => {
-  const oldEnv = process.env;
-
-  beforeEach(() => {
-    jest.resetModules();
-    jest.clearAllMocks();
-    process.env = { ...oldEnv };
-  });
-
-  afterAll(() => {
-    process.env = oldEnv;
-  });
-
   const expectedMetadata = {
     title: 'title',
     description: 'title',
@@ -81,11 +76,11 @@ describe('generateMetadata', () => {
   };
 
   test('returns expected metadata with undefined values', async () => {
-    process.env = {
+    mockedEnvs.mockImplementationOnce(() => ({
       NODE_ENV: 'production',
-      BUNDLE_ANALYZER: 'false',
+      BUNDLE_ANALYZER: false,
       NEXT_PUBLIC_BASE_URL: '',
-    };
+    }));
 
     const expected = {
       ...expectedMetadata,
@@ -97,15 +92,15 @@ describe('generateMetadata', () => {
   });
 
   test('returns expected metadata values', async () => {
-    process.env = {
+    mockedEnvs.mockImplementationOnce(() => ({
       NODE_ENV: 'production',
-      BUNDLE_ANALYZER: 'false',
-      NEXT_PUBLIC_BASE_URL: 'https://localhost:3000',
-    };
+      BUNDLE_ANALYZER: false,
+      NEXT_PUBLIC_BASE_URL: 'https://example.com',
+    }));
 
     const expected = {
       ...expectedMetadata,
-      metadataBase: new URL('https://localhost:3000'),
+      metadataBase: new URL('https://example.com'),
     };
 
     const metadata = await generateMetadata({ params: { locale: 'en' } });
