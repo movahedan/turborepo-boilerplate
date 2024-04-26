@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
+    "lint-locale": "npm exec -- @inlang/cli lint --project project.inlang",
     "test": "jest --color",
     "type-check": "tsc --project ./tsconfig.json",
     "storybook": "storybook dev -p 6201 --quiet",
@@ -17,7 +18,7 @@
     "@repo/router": "*"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^14.2.2",
+    "@next/bundle-analyzer": "14.2.2",
     "@repo/config-eslint": "*",
     "@repo/config-jest": "*",
     "@repo/config-tailwind": "*",

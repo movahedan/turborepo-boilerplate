@@ -1,3 +1,4 @@
+/* eslint-disable i18next/no-literal-string -- the file is outside of the [locale]*/
 'use client';
 
 import Link from 'next/link';

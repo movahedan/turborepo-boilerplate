@@ -3,6 +3,6 @@
   "compilerOptions": {
     "noEmit": true
   },
-  "include": [".", ".eslintrc.js", ".storybook/**/*"],
+  "include": [".", ".eslintrc.js", ".storybook/**/*", "**.json", "public/locales/**.json"],
   "exclude": ["node_modules", "dist", ".turbo", ".next"]
 }

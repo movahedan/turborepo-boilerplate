@@ -1,3 +1,4 @@
+/* eslint-disable i18next/no-literal-string -- the file is outside of the [locale]*/
 'use client';
 
 // Do not use @repo/router since at this point there's no locale

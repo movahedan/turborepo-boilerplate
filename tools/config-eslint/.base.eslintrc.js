@@ -7,6 +7,7 @@ module.exports = {
   parserOptions: {
     project: resolve(process.cwd(), 'tsconfig.json'),
     tsconfigRootDir: process.cwd(),
+    extraFileExtensions: ['.json'],
     sourceType: 'module',
     ecmaVersion: 2020,
     ecmaFeatures: {
@@ -20,6 +21,7 @@ module.exports = {
     require.resolve('@vercel/style-guide/eslint/typescript'),
     require.resolve('@vercel/style-guide/eslint/node'),
     'eslint-config-turbo',
+    './.i18n.eslintrc.js',
     './.base.envs.eslintrc.js',
     './.base.import.eslintrc.js',
   ],

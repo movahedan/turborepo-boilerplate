@@ -6,15 +6,15 @@ import Page from './page';
 
 jest.mock('next-intl/server', () => ({
   ...jest.requireActual('next-intl/server'),
+  unstable_setRequestLocale: jest.fn(),
   getTranslations: jest.fn().mockResolvedValue(
-    (key: 'title' | 'description' | 'get-started') =>
+    (key: 'app./.title' | 'app./.description' | 'app./.get-started') =>
       ({
-        title: 'Test Title',
-        description: 'Test Description',
-        'get-started': 'Get Started',
+        'app./.title': 'Test Title',
+        'app./.description': 'Test Description',
+        'app./.get-started': 'Get Started',
       })[key],
   ),
-  unstable_setRequestLocale: jest.fn(),
 }));
 
 jest.mock('@repo/router', () => ({
@@ -31,10 +31,6 @@ jest.mock('@repo/ui/molecules', () => ({
 }));
 
 describe('<Page />', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   test('renders correctly and fetches translations', async () => {
     const page = await Page({ params: { locale: 'en' } });
     renderWithLocale(page);
