@@ -1,0 +1,36 @@
+{
+  "name": "my-clicky-game",
+  "short_name": "my-clicky-game",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/icons/favicon-android-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "density": "0.75"
+    },
+    {
+      "src": "/icons/favicon-android-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "density": "1.0"
+    },
+    {
+      "src": "/icons/favicon-android-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "density": "1.5"
+    },
+    {
+      "src": "/icons/favicon-android-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "density": "2.0"
+    }
+  ]
+}
