@@ -6,12 +6,6 @@ import { envs } from '@repo/utilities/envs';
 import Layout, { generateMetadata, generateStaticParams } from './layout';
 
 jest.mock('next/navigation');
-jest.mock('next-intl/server', () => ({
-  ...jest.requireActual('next-intl/server'),
-  unstable_setRequestLocale: jest.fn(),
-  getTranslations: jest.fn().mockResolvedValue(() => 'title'),
-}));
-
 jest.mock('@repo/utilities/envs', () => ({
   envs: jest.fn(),
 }));
@@ -20,7 +14,6 @@ const mockedEnvs = jest.mocked(envs);
 describe('<Layout />', () => {
   test('renders children with NextIntlProvider', async () => {
     const layout = await Layout({
-      params: { locale: 'en' },
       children: <div>Child Component</div>,
     });
 
@@ -29,7 +22,6 @@ describe('<Layout />', () => {
 
   test('renders children wrapped in NextIntlClientProvider after setting request locale', async () => {
     const layout = await Layout({
-      params: { locale: 'en' },
       children: <div data-testid="test-child">Test Child</div>,
     });
     render(layout);
@@ -40,7 +32,6 @@ describe('<Layout />', () => {
 
   test('calls notFound when provided locale is not included in supported locales', async () => {
     const layout = await Layout({
-      params: { locale: 'es' as never },
       children: <div data-testid="test-child">Test Child</div>,
     });
     render(layout);
@@ -75,7 +66,7 @@ describe('generateMetadata', () => {
     },
   };
 
-  test('returns expected metadata with undefined values', async () => {
+  test('returns expected metadata with undefined values', () => {
     mockedEnvs.mockImplementationOnce(() => ({
       NODE_ENV: 'production',
       BUNDLE_ANALYZER: false,
@@ -87,11 +78,11 @@ describe('generateMetadata', () => {
       metadataBase: undefined,
     };
 
-    const metadata = await generateMetadata({ params: { locale: 'en' } });
+    const metadata = generateMetadata();
     expect(metadata).toEqual(expected);
   });
 
-  test('returns expected metadata values', async () => {
+  test('returns expected metadata values', () => {
     mockedEnvs.mockImplementationOnce(() => ({
       NODE_ENV: 'production',
       BUNDLE_ANALYZER: false,
@@ -103,7 +94,7 @@ describe('generateMetadata', () => {
       metadataBase: new URL('https://example.com'),
     };
 
-    const metadata = await generateMetadata({ params: { locale: 'en' } });
+    const metadata = generateMetadata();
     expect(metadata).toEqual(expected);
   });
 });

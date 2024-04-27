@@ -1,31 +1,27 @@
-import { pathnames } from '@repo/router';
-
 import sitemap from './sitemap';
 
-import type { Locales } from '@repo/router/src/locales';
+// jest.mock('@repo/router', () => ({
+//   ...jest.requireActual('@repo/router'),
+//   getPathname: jest.fn(
+//     ({ locale, href }: { locale: Locales; href: string }) => {
+//       const pathname = pathnames[href];
 
-jest.mock('@repo/router', () => ({
-  ...jest.requireActual('@repo/router'),
-  getPathname: jest.fn(
-    ({ locale, href }: { locale: Locales; href: string }) => {
-      const pathname = pathnames[href];
+//       if (typeof pathname === 'string') return pathname;
 
-      if (typeof pathname === 'string') return pathname;
-
-      return pathname[locale];
-    },
-  ),
-  pathnames: {
-    '/': {
-      nl: '/',
-      en: '/',
-    },
-    '/sample': {
-      nl: '/nl-sample',
-      en: '/en-sample',
-    },
-  },
-}));
+//       return pathname[locale];
+//     },
+//   ),
+//   pathnames: {
+//     '/': {
+//       nl: '/',
+//       en: '/',
+//     },
+//     '/sample': {
+//       nl: '/nl-sample',
+//       en: '/en-sample',
+//     },
+//   },
+// }));
 
 jest.mock('@repo/utilities/envs', () => ({
   envs: jest.fn(() => ({ NEXT_PUBLIC_BASE_URL: 'https://example.com' })),

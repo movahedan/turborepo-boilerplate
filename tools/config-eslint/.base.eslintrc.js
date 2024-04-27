@@ -40,7 +40,7 @@ module.exports = {
     ],
     // off rules
     '@typescript-eslint/explicit-function-return-type': 'off',
-    'import/no-extraneous-dependencies': 'off'
+    'import/no-extraneous-dependencies': 'off',
   },
   overrides: [
     {

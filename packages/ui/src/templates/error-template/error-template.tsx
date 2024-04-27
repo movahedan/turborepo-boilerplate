@@ -1,22 +1,18 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 
-import { Link, routes, useRouter } from '@repo/router';
+import * as t from '@/translations/messages';
 import { errorHandlerApp } from '@repo/utilities/error-handlers';
 
-import { Button } from '@repo/ui/atoms';
+import { Button } from '../../atoms';
 
 export interface ErrorTemplateProps {
   error: string | (Error & { digest?: string });
-  reset?: () => void;
+  // reset?: () => void;
 }
 
-export function ErrorTemplate({ error, reset }: ErrorTemplateProps) {
-  const t = useTranslations();
-  const router = useRouter();
-
+export function ErrorTemplate({ error }: ErrorTemplateProps) {
   useEffect(() => {
     errorHandlerApp(error);
   }, [error]);
@@ -26,29 +22,23 @@ export function ErrorTemplate({ error, reset }: ErrorTemplateProps) {
       <p>
         {typeof error === 'string'
           ? error
-          : error.message || error.digest || t('common.unexpected-error')}
+          : error.message ||
+            error.digest ||
+            t.ui_templates_errorTemplate_unexpectedError()}
       </p>
 
       <div className="mx-auto mt-2 inline-flex space-x-1">
-        {Boolean(reset) && (
-          <Button
-            onClick={() => {
-              reset?.();
-            }}
-          >
-            {t('common.try-again')}
-          </Button>
-        )}
+        {/* {Boolean(reset) && ( */}
         <Button
-          onClick={() => {
-            router.refresh();
-          }}
+        // onClick={() => {
+        //   reset?.();
+        // }}
         >
-          {t('common.reload')}
+          {t.ui_templates_errorTemplate_tryAgain()}
         </Button>
-        <Link href={routes.index()}>
-          <Button>{t('common.go-home')}</Button>
-        </Link>
+        {/* )} */}
+        <Button>{t.ui_templates_errorTemplate_reload()}</Button>
+        <Button>{t.ui_templates_errorTemplate_goHome()}</Button>
       </div>
     </div>
   );

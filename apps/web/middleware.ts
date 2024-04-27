@@ -1,17 +1,6 @@
-import createMiddleware from 'next-intl/middleware';
-
-import { pathnames, locales, defaultLocale } from '@repo/router';
-
-const middleware = createMiddleware({
-  defaultLocale,
-  locales,
-  pathnames,
-  localeDetection: true,
-  alternateLinks: true,
-});
+import { middleware } from './src/navigation';
 
 export const config = {
-  // Match only internationalized pathnames
   matcher: ['/', '/(en|nl)/:path*'],
 };
 

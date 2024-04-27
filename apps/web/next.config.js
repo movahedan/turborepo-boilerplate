@@ -1,11 +1,10 @@
+const { paraglide } = require('@inlang/paraglide-next/plugin');
 const createBundleAnalyzer = require('@next/bundle-analyzer');
-const createNextIntlPlugin = require('next-intl/plugin');
 
 const isBundleAnalyzerEnabled =
   process.env.BUNDLE_ANALYZER === 'true' &&
   process.env.NODE_ENV === 'production';
 
-const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 const withBundleAnalyzer = createBundleAnalyzer({
   enabled: isBundleAnalyzerEnabled,
   analyzerMode: 'json',
@@ -18,8 +17,15 @@ const nextConfig = {
   reactStrictMode: true,
 };
 
-const composedConfigs = withNextIntl(nextConfig);
+let composedConfigs = nextConfig;
+if (isBundleAnalyzerEnabled) {
+  composedConfigs = withBundleAnalyzer(nextConfig);
+}
 
-module.exports = isBundleAnalyzerEnabled
-  ? withBundleAnalyzer(composedConfigs)
-  : composedConfigs;
+module.exports = paraglide({
+  paraglide: {
+    project: './project.inlang',
+    outdir: './src/translations',
+  },
+  ...composedConfigs,
+});

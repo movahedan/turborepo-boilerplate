@@ -7,18 +7,25 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "./postcss.config.js",
-    "public/locales/**.json"
+    "public/locales/**.json",
+    "./dist/build/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
     "dist"
   ],
   "compilerOptions": {
+    "allowJs": true,
     "incremental": true,
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      ".": ["."]
+      ".": [
+        "."
+      ],
+      "@/*": [
+        "src/*"
+      ]
     }
   }
 }

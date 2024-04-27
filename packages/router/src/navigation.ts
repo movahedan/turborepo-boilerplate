@@ -1,16 +1,15 @@
-import { createLocalizedPathnamesNavigation } from 'next-intl/navigation';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+import { createI18n } from '@inlang/paraglide-next';
 
-import { locales } from './locales';
-import { pathnames } from './routes';
+import type { Locales } from './locales';
 
 export const {
-  getPathname,
-  usePathname,
-  useRouter,
   Link,
+  middleware,
+  useRouter,
+  usePathname,
   redirect,
   permanentRedirect,
-} = createLocalizedPathnamesNavigation({
-  locales,
-  pathnames,
-});
+  localizePath,
+} = createI18n<Locales>();

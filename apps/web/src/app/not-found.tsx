@@ -1,12 +1,12 @@
 /* eslint-disable i18next/no-literal-string -- the file is outside of the [locale]*/
 'use client';
 
-// Do not use @repo/router since at this point there's no locale
+// Do not use @/navigation since at this point there's no locale
 import Link from 'next/link';
 
-import { routes } from '@repo/router';
-
 import { Button } from '@repo/ui/atoms';
+
+import { routes } from '@/routes';
 
 // Render the default Next.js 404 page when a route
 // is requested that doesn't match the middleware and

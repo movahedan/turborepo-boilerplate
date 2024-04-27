@@ -1,26 +1,36 @@
 import './globals.css';
+// import { initializeLanguage, LanguageProvider } from '@inlang/paraglide-next';
 import { Inter } from 'next/font/google';
+// import { cookies, headers } from 'next/headers';
 
-import { metadataAlternatesLanguage } from '@repo/router';
 import { envs } from '@repo/utilities/envs';
 
 import { WebVitals } from './web-vitals';
+// import { languageTag, setLanguageTag } from '../translations/runtime';
 
+import type { AvailableLanguageTag } from '../translations/runtime';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
+// initializeLanguage();
+
 const inter = Inter({ subsets: ['latin'] });
 
+// const direction: Record<AvailableLanguageTag, 'rtl' | 'ltr'> = {
+//   en: 'ltr',
+//   nl: 'rtl',
+// };
+
 export interface RootLayoutProps {
+  params: { locale: AvailableLanguageTag };
   children: ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html>
       <body className={`flex min-h-screen flex-col ${inter.className}`}>
         {children}
-
         <WebVitals />
       </body>
     </html>
@@ -50,7 +60,10 @@ export function generateMetadata(): Metadata {
     metadataBase: websiteUrl,
     alternates: {
       canonical: '/',
-      languages: metadataAlternatesLanguage,
+      languages: {
+        'en-US': '/en-US',
+        'nl-NL': '/nl',
+      },
     },
     openGraph: {
       type: 'website',

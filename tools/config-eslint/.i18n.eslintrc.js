@@ -15,5 +15,11 @@ module.exports = {
         "i18next/no-literal-string": "off",
       },
     },
+    {
+      files: ['src/translations/**/*.js'],
+      rules: {
+        'eslint-comments/require-description': 'off'
+      }
+    }
   ]
 };

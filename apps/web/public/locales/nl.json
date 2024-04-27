@@ -1,26 +1,21 @@
 {
-  "document": {
-    "title": "my-clicky-game",
-    "description": "my-clicky-game"
-  },
-  "common": {
-    "close": "Sluiten",
-    "try-again": "Probeer opnieuw",
-    "go-home": "Ga naar huis",
-    "reload": "Herladen",
-    "submit": "Verzenden",
-    "updated": "Bijgewerkt",
-    "unexpected-error": "Er is een onverwachte fout opgetreden."
-  },
-  "app": {
-    "/404": {
-      "status": "404",
-      "title": "Niet Gevonden!"
-    },
-    "/": {
-      "title": "Titel van de startpagina",
-      "description": "Beschrijving van de startpagina",
-      "get-started": "Beginnen"
-    }
-  }
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+
+  "document_title": "myClickyGame",
+  "document_description": "myClickyGame",
+
+  "common_close": "Sluiten",
+  "common_tryAgain": "Probeer opnieuw",
+  "common_goHome": "Ga naar huis",
+  "common_reload": "Herladen",
+  "common_submit": "Verzenden",
+  "common_updated": "Bijgewerkt",
+  "common_unexpectedError": "Er is een onverwachte fout opgetreden.",
+
+  "app_404_status": "404",
+  "app_404_title": "Niet Gevonden!",
+
+  "app_index_title": "Titel van de startpagina",
+  "app_index_description": "Beschrijving van de startpagina",
+  "app_index_getStarted": "Beginnen"
 }

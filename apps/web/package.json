@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "@repo/ui": "*",
-    "@repo/router": "*"
+    "@repo/router": "*",
+    "@inlang/paraglide-next": "0.1.6"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "14.2.2",
@@ -23,6 +24,7 @@
     "@repo/config-jest": "*",
     "@repo/config-tailwind": "*",
     "@repo/config-typescript": "*",
-    "@repo/utilities-test": "*"
+    "@repo/utilities-test": "*",
+    "@inlang/paraglide-js": "1.7.2"
   }
 }

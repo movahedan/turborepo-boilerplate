@@ -1,26 +1,21 @@
 {
-  "document": {
-    "title": "my-clicky-game",
-    "description": "my-clicky-game"
-  },
-  "common": {
-    "close": "Close",
-    "try-again": "Try again",
-    "go-home": "Go home",
-    "reload": "Reload",
-    "submit": "Submit",
-    "updated": "Updated",
-    "unexpected-error": "An unexpected error ocurred."
-  },
-  "app": {
-    "/404": {
-      "status": "404",
-      "title": "Not Found!"
-    },
-    "/": {
-      "title": "Home page title",
-      "description": "Home page description",
-      "get-started": "Get started"
-    }
-  }
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+
+  "document_title": "myClickyGame",
+  "document_description": "myClickyGame",
+
+  "common_close": "Close",
+  "common_tryAgain": "Try again",
+  "common_goHome": "Go home",
+  "common_reload": "Reload",
+  "common_submit": "Submit",
+  "common_updated": "Updated",
+  "common_unexpectedError": "An unexpected error ocurred.",
+
+  "app_404_status": "404",
+  "app_404_title": "Not Found!",
+
+  "app_index_title": "Home page title",
+  "app_index_description": "Home page description",
+  "app_index_getStarted": "Get started"
 }

@@ -12,5 +12,9 @@
   "i18n-ally.extract.autoDetect": false,
   "i18n-ally.enabledFrameworks": [
     "next-intl"
+  ],
+  "cSpell.words": [
+    "inlang",
+    "paraglide"
   ]
 }

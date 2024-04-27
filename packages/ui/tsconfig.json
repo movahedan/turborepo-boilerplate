@@ -1,5 +1,15 @@
 {
   "extends": "@repo/config-typescript/react-library.json",
   "include": ["**/*.ts", "**/*.tsx", "./postcss.config.js"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "module": "ESNext",
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      ".": ["."],
+      "@/*": ["src/*"]
+    }
+  }
 }

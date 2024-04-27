@@ -1,7 +1,8 @@
 {
-  "ui": {
-    "atoms": {},
-    "molecules": {},
-    "templates": {}
-  }
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+
+  "ui_templates_errorTemplate_tryAgain": "Try again",
+  "ui_templates_errorTemplate_goHome": "Go home",
+  "ui_templates_errorTemplate_reload": "Reload",
+  "ui_templates_errorTemplate_unexpectedError": "An unexpected error ocurred."
 }

@@ -10,20 +10,28 @@ module.exports = {
     "plugin:import/typescript",
   ],
   settings: {
-    'import/internal-regex': '^(?:@repo/)',
+    'import/internal-regex': '^(?:@repo/|@/)',
+    'import/extensions': ['.js', '.jsx', '.tsx', '.ts'],
     'import/resolver': {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      },
       typescript: {
-        alwaysTryTypes: true,
         project,
       },
     },
   },
   rules: {
+    'import/no-unresolved': 'off', // not needed, typescript will do it
     'import/first': 'error',
     'import/no-cycle': 'error',
     'import/namespace': 'error',
     'import/no-duplicates': 'error',
-    'import/no-unresolved': 'error',
     'import/no-self-import': 'error',
     'import/no-default-export': 'error',
     'import/no-unused-modules': 'error',
@@ -61,6 +69,11 @@ module.exports = {
             pattern: '@repo/ui/*',
             group: 'internal',
             position: 'after',
+          },
+          {
+            pattern: '@/*',
+            group: 'parent',
+            position: 'before',
           }
         ],
         pathGroupsExcludedImportTypes: ['builtin', 'external'],
