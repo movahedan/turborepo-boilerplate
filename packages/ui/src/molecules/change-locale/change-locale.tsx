@@ -1,29 +1,32 @@
 'use client';
 
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
-import { useLocale } from 'next-intl';
 
-import { Link, locales, usePathname } from '@repo/router';
+import { locales } from '@repo/utilities/locales';
 import { classNames } from '@repo/utilities/string';
 
+import { Button } from '../../atoms';
+
+import type { Locales } from '@repo/utilities/locales';
+
 export interface ChangeLocaleProps {
+  locale: Locales;
+  onChange: (locale?: Locales) => unknown;
   className?: string;
 }
 
-export function ChangeLocale({ className }: ChangeLocaleProps) {
-  const locale = useLocale();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
+export function ChangeLocale({
+  locale,
+  onChange,
+  className,
+}: ChangeLocaleProps) {
   const newLocale = locales.find((l) => l !== locale);
 
   return (
-    <Link
+    <Button
       aria-label={`Change locale to ${newLocale}`}
       className={className}
-      href={{ pathname, search: searchParams.toString() }}
-      locale={newLocale}
+      onClick={() => onChange(newLocale)}
     >
       <Image
         alt={`Change locale to ${newLocale}`}
@@ -36,6 +39,6 @@ export function ChangeLocale({ className }: ChangeLocaleProps) {
         src={`/images/flag-${newLocale}.webp`}
         width={64}
       />
-    </Link>
+    </Button>
   );
 }

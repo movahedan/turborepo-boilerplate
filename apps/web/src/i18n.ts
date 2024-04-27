@@ -3,7 +3,7 @@ import { getRequestConfig } from 'next-intl/server';
 
 import { getMessages } from './get-messages';
 
-import type { Locales } from '@repo/router';
+import type { Locales } from '@repo/utilities/locales';
 
 // NOTE: This function is being used by next-intl package, see next.config.js
 const requestConfig: ReturnType<typeof getRequestConfig> = getRequestConfig(

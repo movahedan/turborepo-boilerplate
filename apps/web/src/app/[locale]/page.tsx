@@ -4,12 +4,13 @@ import {
 } from 'next-intl/server';
 import { Suspense } from 'react';
 
-import { Link, routes } from '@repo/router';
+import { ChangeNextLocale } from '@/components/change-next-locales';
+import { Link } from '@/navigation';
+import { routes } from '@/routes';
 
 import { Button } from '@repo/ui/atoms';
-import { ChangeLocale } from '@repo/ui/molecules';
 
-import type { Locales } from '@repo/router';
+import type { Locales } from '@repo/utilities/locales';
 
 export interface HomePageProps {
   params: { locale: Locales };
@@ -34,7 +35,7 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
             <Button>{t('app./.get-started')}</Button>{' '}
           </Link>
           <Suspense>
-            <ChangeLocale className="size-10" />
+            <ChangeNextLocale />
           </Suspense>
         </div>
       </main>

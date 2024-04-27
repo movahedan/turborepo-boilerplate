@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/config-typescript/nextjs.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": true
   },

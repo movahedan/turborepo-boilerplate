@@ -1,11 +1,14 @@
-import { pathnames } from '@repo/router';
+import { pathnames } from '@/routes';
 
 import sitemap from './sitemap';
 
-import type { Locales } from '@repo/router/src/locales';
+import type { Locales } from '@repo/utilities/locales';
 
-jest.mock('@repo/router', () => ({
-  ...jest.requireActual('@repo/router'),
+jest.mock('@repo/utilities/envs', () => ({
+  envs: jest.fn(() => ({ NEXT_PUBLIC_BASE_URL: 'https://test.com' })),
+}));
+jest.mock('@/navigation', () => ({
+  ...jest.requireActual('@/navigation'),
   getPathname: jest.fn(
     ({ locale, href }: { locale: Locales; href: string }) => {
       const pathname = pathnames[href];
@@ -15,6 +18,9 @@ jest.mock('@repo/router', () => ({
       return pathname[locale];
     },
   ),
+}));
+jest.mock('@/routes', () => ({
+  ...jest.requireActual('@/routes'),
   pathnames: {
     '/': {
       nl: '/',
@@ -27,32 +33,28 @@ jest.mock('@repo/router', () => ({
   },
 }));
 
-jest.mock('@repo/utilities/envs', () => ({
-  envs: jest.fn(() => ({ NEXT_PUBLIC_BASE_URL: 'https://example.com' })),
-}));
-
 describe('sitemap', () => {
   test('generates correct URLs', () => {
     const result = sitemap();
 
     expect(result).toEqual([
       {
-        url: 'https://example.com/en',
+        url: 'https://test.com/en',
         lastModified: expect.any(Date) as Date,
         alternates: {
           languages: {
-            en: 'https://example.com/en',
-            nl: 'https://example.com/nl',
+            en: 'https://test.com/en',
+            nl: 'https://test.com/nl',
           },
         },
       },
       {
-        url: 'https://example.com/en/en-sample',
+        url: 'https://test.com/en/en-sample',
         lastModified: expect.any(Date) as Date,
         alternates: {
           languages: {
-            en: 'https://example.com/en/en-sample',
-            nl: 'https://example.com/nl/nl-sample',
+            en: 'https://test.com/en/en-sample',
+            nl: 'https://test.com/nl/nl-sample',
           },
         },
       },

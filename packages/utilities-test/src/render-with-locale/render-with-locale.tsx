@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 
-import { defaultLocale } from '@repo/router';
+import { defaultLocale } from '@repo/utilities/locales';
 
 import type { RenderOptions, RenderResult } from '@testing-library/react';
 import type { ComponentProps } from 'react';
@@ -25,8 +25,8 @@ export const renderWithLocale: RenderWithLocale = (
 ) => {
   const wrapper: RenderOptions['wrapper'] = ({ children }) => (
     <NextIntlClientProvider
-      {...nextIntlClientProviderProps}
       locale={nextIntlClientProviderProps.locale || defaultLocale}
+      messages={nextIntlClientProviderProps.messages || {}}
     >
       {children}
     </NextIntlClientProvider>

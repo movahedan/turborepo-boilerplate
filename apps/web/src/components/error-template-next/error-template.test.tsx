@@ -2,12 +2,12 @@ import { screen, fireEvent } from '@testing-library/react';
 
 import { renderWithLocale } from '@repo/utilities-test';
 
-import { ErrorTemplate } from './error-template';
+import { ErrorTemplateNext } from './error-template-next';
 
-import type { ErrorTemplateProps } from './error-template';
+import type { ErrorTemplateProps } from './error-template-next';
 
-jest.mock('next/navigation', () => ({
-  ...jest.requireActual('next/navigation'),
+jest.mock('@/navigation', () => ({
+  ...jest.requireActual('@/navigation'),
   useRouter: jest.fn().mockImplementation(() => ({
     refresh: () => {
       console.info('refresh');
@@ -15,7 +15,7 @@ jest.mock('next/navigation', () => ({
   })),
 }));
 
-describe('<ErrorTemplate />', () => {
+describe('<ErrorTemplateNext />', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -25,7 +25,7 @@ describe('<ErrorTemplate />', () => {
 
   const renderComponent = (props: Partial<ErrorTemplateProps> = {}) =>
     renderWithLocale(
-      <ErrorTemplate error="test error message" {...props} />,
+      <ErrorTemplateNext error="test error message" {...props} />,
       {},
       {
         locale: 'en',

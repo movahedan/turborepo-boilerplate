@@ -1,9 +1,0 @@
-{
-  "extends": "@repo/config-typescript/react-library.json",
-  "include": ["**/*.ts", "**/*.tsx"],
-  "compilerOptions": {
-    "declaration": false,
-    "declarationMap": false
-  },
-  "exclude": ["node_modules", "dist"]
-}

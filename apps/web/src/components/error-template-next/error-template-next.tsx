@@ -3,7 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 
-import { Link, routes, useRouter } from '@repo/router';
+import { Link, useRouter } from '@/navigation';
+import { routes } from '@/routes';
 import { errorHandlerApp } from '@repo/utilities/error-handlers';
 
 import { Button } from '@repo/ui/atoms';
@@ -13,7 +14,7 @@ export interface ErrorTemplateProps {
   reset?: () => void;
 }
 
-export function ErrorTemplate({ error, reset }: ErrorTemplateProps) {
+export function ErrorTemplateNext({ error, reset }: ErrorTemplateProps) {
   const t = useTranslations();
   const router = useRouter();
 

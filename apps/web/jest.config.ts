@@ -10,6 +10,10 @@ const createJestConfig = nextJest({
 
 const config: Config = {
   ...jestConfigJsdom,
+  setupFilesAfterEnv: [
+    ...(jestConfigJsdom.setupFilesAfterEnv || []),
+    './jest.setup.tsx',
+  ],
   coverageThreshold: {
     global: {
       branches: 90,

@@ -1,4 +1,4 @@
-import type { Locales } from '@repo/router';
+import type { Locales } from '@repo/utilities/locales';
 import type { AbstractIntlMessages } from 'next-intl';
 
 export async function getMessages(locale: Locales) {

@@ -16,18 +16,19 @@ jest.mock('next-intl/server', () => ({
       })[key],
   ),
 }));
-
-jest.mock('@repo/router', () => ({
-  ...jest.requireActual('@repo/router'),
+jest.mock('@repo/ui/molecules', () => ({
+  ...jest.requireActual('@repo/ui/molecules'),
+  ChangeLocale: jest.fn(),
+}));
+jest.mock('@/navigation', () => ({
+  ...jest.requireActual('@/navigation'),
+  useRouter: jest.fn(),
+  usePathname: jest.fn(),
+  uesLocale: jest.fn(),
   Link: jest.fn(({ href }) => <div>{href}</div>),
   routes: {
     d: { index: () => '/dashboard' },
   },
-}));
-
-jest.mock('@repo/ui/molecules', () => ({
-  ...jest.requireActual('@repo/ui/molecules'),
-  ChangeLocale: jest.fn(),
 }));
 
 describe('<Page />', () => {

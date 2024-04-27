@@ -1,4 +1,4 @@
 'use client';
-import { ErrorTemplate } from '@repo/ui/templates';
+import { ErrorTemplateNext } from '@/components/error-template-next';
 
-export default ErrorTemplate;
+export default ErrorTemplateNext;

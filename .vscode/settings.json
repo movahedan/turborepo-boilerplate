@@ -3,6 +3,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
+  "eslint.workingDirectories": [{ "mode": "auto" }],
   "[json]": { "editor.formatOnSave": true },
   "i18n-ally.localesPaths": [
     "apps/web/public/locales",

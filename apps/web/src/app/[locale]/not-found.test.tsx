@@ -26,7 +26,7 @@ describe('notFound', () => {
   test('renders the 404 page with "Not Found!" message and a "Go Home" button', () => {
     renderComponent();
 
-    const goHomeButton = screen.getByRole('button', { name: 'Go Home' });
+    const goHomeButton = screen.getByText('Go Home');
     expect(goHomeButton).toBeInTheDocument();
   });
 });

@@ -5,6 +5,9 @@ export const jestConfigBase: Config = {
   roots: ['<rootDir>/'],
   modulePaths: ['<rootDir>/'],
   moduleDirectories: ['node_modules'],
+  moduleNameMapper: {
+    '@/(.*)': '<rootDir>/src/$1'
+  },
   coverageDirectory: "<rootDir>/dist/test/coverage",
   setupFilesAfterEnv: ["@repo/config-jest/jest.setup.base.ts"],
   extensionsToTreatAsEsm: ['.ts', '.tsx'],

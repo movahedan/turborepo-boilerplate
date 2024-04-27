@@ -5,14 +5,14 @@ import {
   unstable_setRequestLocale as unstableSetRequestLocale,
 } from 'next-intl/server';
 
-import { locales, metadataAlternatesLanguage } from '@repo/router';
 import { envs } from '@repo/utilities/envs';
+import { locales, metadataAlternatesLanguage } from '@repo/utilities/locales';
 
 import { getMessages as getUiMessages } from '@repo/ui/get-messages';
 
 import { getMessages } from '../../get-messages';
 
-import type { Locales } from '@repo/router';
+import type { Locales } from '@repo/utilities/locales';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 

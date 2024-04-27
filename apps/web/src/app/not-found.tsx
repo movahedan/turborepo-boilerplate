@@ -1,10 +1,10 @@
 /* eslint-disable i18next/no-literal-string -- the file is outside of the [locale]*/
 'use client';
 
-// Do not use @repo/router since at this point there's no locale
+// Do not use @repo/utilities/locales since at this point there's no locale
 import Link from 'next/link';
 
-import { routes } from '@repo/router';
+import { routes } from '@/routes';
 
 import { Button } from '@repo/ui/atoms';
 

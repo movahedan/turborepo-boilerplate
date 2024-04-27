@@ -1,8 +1,8 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 
-import { metadataAlternatesLanguage } from '@repo/router';
 import { envs } from '@repo/utilities/envs';
+import { metadataAlternatesLanguage } from '@repo/utilities/locales';
 
 import { WebVitals } from './web-vitals';
 
