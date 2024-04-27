@@ -8,10 +8,11 @@
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "test": "jest --color",
-    "type-check": "tsc --project ./tsconfig.json"
+    "type-check": "tsc --project ./tsconfig.json",
+    "update-dependencies": "npm exec npm-check-updates -- -u"
   },
   "dependencies": {
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "2.3.0"
   },
   "devDependencies": {
     "@repo/config-eslint": "*",
