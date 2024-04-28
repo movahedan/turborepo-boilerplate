@@ -18,9 +18,21 @@ env:
   CACHE_RESTORE_KEYS: build-
   
 jobs:
-  type-check:
-    name: TypeScript Compiler 🔎
+  install:
+    name: Install packages 🔧
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
+
+  type-check:
+    name: Compile 🔎
+    runs-on: ubuntu-latest
+    needs: install
 
     steps:
       - name: Checkout 🛎️

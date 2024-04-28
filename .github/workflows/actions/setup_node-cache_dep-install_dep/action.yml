@@ -9,7 +9,8 @@ runs:
       with:
         node-version: '20.12.2'
         cache: 'npm'
+        cache-dependency-path: ./package-lock.json
 
     - name: Install dependencies 🔧
       shell: bash
-      run: rm -rf package-lock.json && npm i
+      run: npm ci --omit=optional
