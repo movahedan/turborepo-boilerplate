@@ -17,6 +17,8 @@ export interface ErrorTemplateProps {
 
 export default function ErrorTemplate({ error, reset }: ErrorTemplateProps) {
   const router = useRouter();
+  const errorMessage =
+    typeof error === 'string' ? error : error.message || error.digest;
 
   useEffect(() => {
     errorHandlerApp(error);
@@ -24,11 +26,7 @@ export default function ErrorTemplate({ error, reset }: ErrorTemplateProps) {
 
   return (
     <div className="my-auto w-full text-center">
-      <p>
-        {typeof error === 'string'
-          ? error
-          : error.message || error.digest || 'An unexpected error ocurred.'}
-      </p>
+      <p>{errorMessage ?? 'An unexpected error ocurred.'}</p>
 
       <div className="mx-auto mt-2 inline-flex space-x-1">
         {Boolean(reset) && (

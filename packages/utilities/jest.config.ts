@@ -4,7 +4,6 @@ import type { Config } from 'jest';
 
 const jestConfig: Config = {
   ...jestConfigBase,
-  collectCoverageFrom: ['src/**/*.{ts,tsx}'],
 };
 
 export default jestConfig;

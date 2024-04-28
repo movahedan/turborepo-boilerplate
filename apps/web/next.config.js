@@ -16,6 +16,7 @@ const nextConfig = {
   distDir: './dist/build/.next',
   swcMinify: true,
   reactStrictMode: true,
+  typescript: { tsconfigPath: './tsconfig.prod.json' },
 };
 
 const composedConfigs = withNextIntl(nextConfig);

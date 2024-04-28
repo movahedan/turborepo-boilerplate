@@ -9,6 +9,7 @@ export const jestConfigBase: Config = {
     '@/(.*)': '<rootDir>/src/$1'
   },
   coverageDirectory: "<rootDir>/dist/test/coverage",
+  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/index.ts'],
   setupFilesAfterEnv: ["@repo/config-jest/jest.setup.base.ts"],
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
   transform: {
@@ -18,7 +19,7 @@ export const jestConfigBase: Config = {
       'ts-jest',
       {
         useESM: true,
-        tsconfig: '<rootDir>/tsconfig.json'
+        tsconfig: '<rootDir>/tsconfig.test.json'
       },
     ],
   },

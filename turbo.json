@@ -7,9 +7,13 @@
     "NEXT_PUBLIC_BASE_URL"
   ],
   "pipeline": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "type-check": {
+      "dependsOn": ["^type-check"],
+      "outputs": ["dist/tsc/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -17,16 +21,13 @@
     "lint-locale": {
       "dependsOn": ["^lint"]
     },
-    "dev": {
-      "cache": false,
-      "persistent": true
-    },
     "test": {
-      "dependsOn": ["^test"]
+      "dependsOn": ["^test"],
+      "outputs": ["dist/test/**"]
     },
-    "type-check": {
-      "dependsOn": ["^type-check"],
-      "outputs": ["dist/tsc/**"]
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/build/**", "!dist/build/.next/cache/**"]
     },
     "storybook": {
       "dependsOn": ["^build"]

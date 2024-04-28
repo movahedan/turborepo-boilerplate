@@ -4,7 +4,7 @@ module.exports = {
   extends: [
     'plugin:json/recommended',
   ],
-  plugins: ["i18next", "i18n-translated"],
+  plugins: ["i18next"],
   rules: {
     "i18next/no-literal-string": "error"
   },

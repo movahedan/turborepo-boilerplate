@@ -17,6 +17,8 @@ export interface ErrorTemplateProps {
 export function ErrorTemplateNext({ error, reset }: ErrorTemplateProps) {
   const t = useTranslations();
   const router = useRouter();
+  const errorMessage =
+    typeof error === 'string' ? error : error.message || error.digest;
 
   useEffect(() => {
     errorHandlerApp(error);
@@ -24,11 +26,7 @@ export function ErrorTemplateNext({ error, reset }: ErrorTemplateProps) {
 
   return (
     <div className="my-auto w-full text-center">
-      <p>
-        {typeof error === 'string'
-          ? error
-          : error.message || error.digest || t('common.unexpected-error')}
-      </p>
+      <p>{errorMessage ?? t('common.unexpected-error')}</p>
 
       <div className="mx-auto mt-2 inline-flex space-x-1">
         {Boolean(reset) && (

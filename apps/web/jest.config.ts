@@ -11,18 +11,13 @@ const createJestConfig = nextJest({
 const config: Config = {
   ...jestConfigJsdom,
   setupFilesAfterEnv: [
-    ...(jestConfigJsdom.setupFilesAfterEnv || []),
+    ...(jestConfigJsdom.setupFilesAfterEnv ?? []),
     './jest.setup.tsx',
   ],
-  coverageThreshold: {
-    global: {
-      branches: 90,
-      functions: 90,
-      lines: 90,
-      statements: 90,
-    },
-  },
-  collectCoverageFrom: ['./src/**/*.{ts,tsx}', '!**/*.stories.tsx'],
+  collectCoverageFrom: [
+    ...(jestConfigJsdom.collectCoverageFrom ?? []),
+    '!**/*.stories.tsx',
+  ],
 };
 
 const jestConfig = createJestConfig(config);

@@ -6,19 +6,20 @@
     "./*": "./src/*/index.ts"
   },
   "scripts": {
+    "type-check": "tsc --project ./tsconfig.json",
     "lint": "eslint . --max-warnings 0",
     "test": "jest --color",
-    "type-check": "tsc --project ./tsconfig.json",
+    "build": "tsup --onSuccess 'tsc --project tsconfig.prod.json'",
     "update-dependencies": "npm exec npm-check-updates -- -u"
   },
   "dependencies": {
     "tailwind-merge": "2.3.0"
   },
   "devDependencies": {
-    "@repo/config-eslint": "*",
-    "@repo/config-jest": "*",
-    "@repo/config-storybook": "*",
-    "@repo/config-tailwind": "*",
-    "@repo/config-typescript": "*"
+    "@repo/config-eslint": "0.0.0",
+    "@repo/config-jest": "0.0.0",
+    "@repo/config-storybook": "0.0.0",
+    "@repo/config-tailwind": "0.0.0",
+    "@repo/config-typescript": "0.0.0"
   }
 }
