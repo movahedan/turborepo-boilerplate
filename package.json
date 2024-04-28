@@ -5,6 +5,10 @@
     "node": ">=20.12.2",
     "npm": ">=10.2.4"
   },
+  "os": [
+    "darwin",
+    "linux"
+  ],
   "workspaces": [
     "apps/*",
     "packages/*",

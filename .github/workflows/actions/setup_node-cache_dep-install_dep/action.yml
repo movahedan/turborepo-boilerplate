@@ -12,4 +12,4 @@ runs:
 
     - name: Install dependencies 🔧
       shell: bash
-      run: npm ci
+      run: rm -rf package-lock.json && npm i
