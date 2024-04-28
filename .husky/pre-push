@@ -1,3 +1,3 @@
-npm run lint-branch branchlint.json &&\
-  npm run build &&\
-  npm run lint-locale
+yarn lint-branch branchlint.json &&\
+  yarn build &&\
+  yarn lint-locale

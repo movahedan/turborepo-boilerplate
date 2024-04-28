@@ -29,7 +29,7 @@ module.exports = {
       return [];
     }
 
-    return [`npm run lint ${affectedFilters.join(' ')}`];
+    return [`yarn lint ${affectedFilters.join(' ')}`];
   },
   '**/*.{t,j}s?(x)': (files) => {
     const affectedFilters = getTurboAffectedFilters(files);
@@ -38,6 +38,6 @@ module.exports = {
       return [];
     }
 
-    return ['npm run type-check', `npm run test ${affectedFilters.join(' ')}`];
+    return ['yarn type-check', `yarn test ${affectedFilters.join(' ')}`];
   },
 };

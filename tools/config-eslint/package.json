@@ -8,6 +8,6 @@
     "./react.eslintrc.js"
   ],
   "scripts": {
-    "update-dependencies": "npm exec npm-check-updates -- -u"
+    "update-dependencies": "yarn upgrade-interactive --latest"
   }
 }
