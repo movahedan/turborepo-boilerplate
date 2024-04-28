@@ -16,10 +16,10 @@ import type { Locales } from '@repo/utilities/locales';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
-export interface LocaleLayoutProps {
+export type LocaleLayoutProps = Readonly<{
   children: ReactNode;
   params: { locale: Locales };
-}
+}>;
 
 export default async function LocaleLayout({
   params: { locale },

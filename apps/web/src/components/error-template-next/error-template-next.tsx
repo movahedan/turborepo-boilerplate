@@ -9,10 +9,10 @@ import { errorHandlerApp } from '@repo/utilities/error-handlers';
 
 import { Button } from '@repo/ui/atoms';
 
-export interface ErrorTemplateProps {
+export type ErrorTemplateProps = Readonly<{
   error: string | (Error & { digest?: string });
   reset?: () => void;
-}
+}>;
 
 export function ErrorTemplateNext({ error, reset }: ErrorTemplateProps) {
   const t = useTranslations();

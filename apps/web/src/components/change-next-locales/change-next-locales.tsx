@@ -6,9 +6,9 @@ import { classNames } from '@repo/utilities/string';
 
 import { ChangeLocale } from '@repo/ui/molecules';
 
-export interface ChangeNextLocaleProps {
+export type ChangeNextLocaleProps = Readonly<{
   className?: string;
-}
+}>;
 
 export function ChangeNextLocale({ className }: ChangeNextLocaleProps) {
   const locale = useLocale();

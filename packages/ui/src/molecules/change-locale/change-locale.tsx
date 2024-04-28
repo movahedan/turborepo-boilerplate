@@ -9,11 +9,11 @@ import { Button } from '../../atoms';
 
 import type { Locales } from '@repo/utilities/locales';
 
-export interface ChangeLocaleProps {
+export type ChangeLocaleProps = Readonly<{
   locale: Locales;
   onChange: (locale?: Locales) => unknown;
   className?: string;
-}
+}>;
 
 export function ChangeLocale({
   locale,
