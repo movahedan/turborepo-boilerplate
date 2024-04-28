@@ -17,22 +17,19 @@
   ],
   "scripts": {
     "prepare": "husky",
-    "build": "turbo build --",
-    "dev": "turbo dev --",
-    "lint": "turbo lint --",
-    "lint-locale": "turbo lint-locale",
+    "build": "turbo build --cache-dir=.turbo --",
+    "dev": "turbo dev --cache-dir=.turbo --",
+    "lint": "turbo lint --cache-dir=.turbo --",
+    "lint-locale": "turbo lint-locale --cache-dir=.turbo ",
     "lint-staged": "lint-staged --relative --verbose",
     "lint-commit": "commitlint",
     "lint-branch": "branch-name-lint",
-    "test": "turbo test --",
-    "type-check": "turbo type-check",
-    "storybook": "turbo storybook",
-    "storybook-build": "turbo storybook-build",
+    "test": "turbo test --cache-dir=.turbo --",
+    "type-check": "turbo type-check --cache-dir=.turbo",
+    "storybook": "turbo storybook --cache-dir=.turbo",
+    "storybook-build": "turbo storybook-build --cache-dir=.turbo",
     "clean": "npm exec --workspaces -c 'rm -rf node_modules .next .turbo dist' && rm -rf node_modules",
     "update-dependencies": "turbo update-dependencies && yarn upgrade-interactive --latest"
-  },
-  "optionalDependencies": {
-    "fsevents": "2.3.2"
   },
   "dependencies": {
     "next": "14.2.3",
