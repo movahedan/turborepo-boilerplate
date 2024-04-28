@@ -20,7 +20,7 @@
     "dev": "turbo dev --",
     "lint": "turbo lint --",
     "lint-locale": "turbo lint-locale --",
-    "lint-staged": "lint-staged",
+    "lint-staged": "lint-staged --relative --verbose",
     "lint-commit": "commitlint",
     "lint-branch": "branch-name-lint",
     "test": "turbo test --",
