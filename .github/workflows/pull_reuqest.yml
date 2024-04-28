@@ -98,7 +98,7 @@ jobs:
         uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
 
       - name: Test 🧪
-        run: yarn test --coverage
+        run: yarn test --filter=[main...${{ github.ref }}] --coverage
 
   sonarcloud:
     name: Sonar Cloud 👍
