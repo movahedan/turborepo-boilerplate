@@ -1,0 +1,88 @@
+name: pull request
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+env:
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+
+  FILE_PATH_WEB_BUILD: ./apps/web/dist/build
+  FILE_PATH_UI_BUILD: ./packages/ui/dist/storybook
+
+  CACHE_PATHS_BUILD: |
+    ./apps/web/dist/build
+    ./packages/ui/dist/storybook
+  CACHE_KEY_BUILD: build-${{ github.sha }}-${{ github.ref_type }}
+  CACHE_RESTORE_KEYS: build-
+  
+jobs:
+  type-check:
+    name: TypeScript Compiler 🔎
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
+
+      - name: TypeScript Compiler 🔎
+        run: npm run type-check
+
+  lint:
+    name: Lint ✅
+    needs: type-check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
+
+      - name: Lint ✅
+        run: npm run lint
+
+  test:
+    name: Test 🧪
+    needs: type-check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
+
+      - name: Test 🧪
+        run: npm run test
+
+  build:
+    name: Build 🏗️
+    needs: type-check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
+
+      - name: Build 🏗️
+        run: |
+          npm run build
+          npm run storybook-build
+
+      - name: Cache build ⚡
+        id: cache_build
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.CACHE_PATHS_BUILD }}
+          key: ${{ env.CACHE_KEY_BUILD }}
+          restore-keys: ${{ env.CACHE_RESTORE_KEYS }}
