@@ -22,7 +22,10 @@
       "dependsOn": []
     },
     "test": {
-      "dependsOn": ["^test"],
+      "dependsOn": ["^test"]
+    },
+    "test-coverage": {
+      "dependsOn": ["^test-coverage"],
       "outputs": ["dist/test/**"]
     },
     "build": {

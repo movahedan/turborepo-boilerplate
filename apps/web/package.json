@@ -10,6 +10,7 @@
     "lint": "eslint . --max-warnings 0",
     "lint-locale": "npx --yes -- @inlang/cli lint --project project.inlang",
     "test": "jest --color",
+    "test-coverage": "jest --color --coverage",
     "update-dependencies": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
