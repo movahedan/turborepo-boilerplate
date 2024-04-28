@@ -9,6 +9,7 @@
     "type-check": "tsc --project ./tsconfig.json",
     "lint": "eslint . --max-warnings 0",
     "test": "jest --color",
+    "test-coverage": "jest --color --coverage",
     "build": "tsup --onSuccess 'tsc --project tsconfig.prod.json'",
     "update-dependencies": "yarn upgrade-interactive --latest"
   },

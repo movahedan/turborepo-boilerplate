@@ -6,7 +6,6 @@ on:
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
   FILE_PATH_WEB_BUILD: ./apps/web/dist/build/.next
@@ -19,18 +18,26 @@ env:
   CACHE_RESTORE_KEYS: build-
   
 jobs:
-  install:
-    name: Install packages 🔧
+  compile:
+    name: 🥉 Compile and Lint
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 🛎️
+      - name: 🛎️ Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
             
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
+
+      - name: 💻 TypeScript Compiler
+        run: yarn --filter="...[HEAD^] type-check"
       
-      - name: Turbo Cache
+      - name: 🟩 Lint 
+        run: yarn --filter="...[HEAD^] lint"
+
+      - name: ⚡ Turbo Cache
         id: turbo-cache
         uses: actions/cache@v4.0.2
         with:
@@ -39,54 +46,35 @@ jobs:
           restore-keys: |
             turbo-${{ github.job }}-${{ github.ref_name }}-
 
-  type-check:
-    name: Compile 🔎
-    runs-on: ubuntu-latest
-    needs: install
-
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
-        uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
-
-      - name: TypeScript Compiler 🔎
-        run: yarn type-check
-
-  lint:
-    name: Lint ✅
-    needs: install
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
-        uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
-
-      - name: Lint ✅
-        run: yarn lint
-
   build:
-    name: Build 🏗️
+    name: 🥈 Build
     runs-on: ubuntu-latest
-    needs: install
+    needs: compile
 
     steps:
-      - name: Checkout 🛎️
+      - name: 🛎️ Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
 
-      - name: Build 🏗️
+      - name: 🏗️ Build
         run: |
           yarn build
           yarn storybook-build
 
-      - name: Cache build ⚡
+      - name: ⚡ Turbo Cache
+        id: turbo-cache
+        uses: actions/cache@v4.0.2
+        with:
+          path: .turbo
+          key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ github.job }}-${{ github.ref_name }}-
+
+      - name: ⚡ Build Cache
         id: cache_build
         uses: actions/cache@v4
         with:
@@ -95,13 +83,15 @@ jobs:
           restore-keys: ${{ env.CACHE_RESTORE_KEYS }}
 
   test:
-    name: Test 🧪
-    needs: [type-check, lint, build]
+    name: 🥇 Test
+    needs: [build]
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 🛎️
+      - name: 🛎️ Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
@@ -111,18 +101,17 @@ jobs:
         run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
 
-      - name: Test 🧪
-        run: yarn test --filter=[main...${{ steps.extract_branch.outputs.branch }}] --coverage
+      - name: 📣 Test
+        run: yarn test-coverage --filter="...[HEAD^]"
 
-  sonarcloud:
-    name: Sonar Cloud 👍
-    needs: [type-check, lint, build]
+  quality-gate:
+    name: 🚀 Quality Gate
+    needs: [build]
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
         with:
-          # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
 
       - name: SonarCloud Scan 👍

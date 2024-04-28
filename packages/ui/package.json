@@ -11,6 +11,7 @@
     "lint": "eslint . --max-warnings 0",
     "lint-locale": "npx --yes -- @inlang/cli lint --project project.inlang",
     "test": "jest --color",
+    "test-coverage": "jest --color --coverage",
     "build": "tsup --onSuccess 'tsc --project tsconfig.prod.json'",
     "storybook": "storybook dev -p 6200 --quiet",
     "storybook-build": "storybook build -o dist/storybook",
