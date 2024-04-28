@@ -27,7 +27,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/build/.next/**"]
+      "outputs": ["dist/build/**", "!dist/build/cache/**"]
     },
     "storybook": {
       "dependsOn": ["^build"]
