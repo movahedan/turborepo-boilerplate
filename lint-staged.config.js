@@ -38,6 +38,6 @@ module.exports = {
       return [];
     }
 
-    return ['yarn type-check', `yarn test ${affectedFilters.join(' ')}`];
+    return ['yarn type-check', `yarn test ${affectedFilters.join(' ')} --coverage`];
   },
 };
