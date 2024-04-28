@@ -19,7 +19,7 @@
       "dependsOn": ["^lint"]
     },
     "lint-locale": {
-      "dependsOn": ["^lint"]
+      "dependsOn": []
     },
     "test": {
       "dependsOn": ["^test"],

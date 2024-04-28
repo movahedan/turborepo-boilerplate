@@ -8,9 +8,11 @@ function getTurboAffectedFilters(files) {
   const affected = new Set();
 
   files.forEach((file) => {
-    const [, , segment] = file.split('/');
+    const [, category, segment] = file.split('/');
 
-    affected.add(`@repo/${segment}`);
+    if(segment && ['apps', 'packages'].includes(category)) {
+      affected.add(`@repo/${segment}`);
+    }
   });
 
   const affectedKeys = Array.from(affected.keys());
@@ -23,10 +25,18 @@ module.exports = {
   '*.{ts,tsx,js,json,html,css,scss,less,sass,svg}': (files) => {
     const affectedFilters = getTurboAffectedFilters(files);
 
+    if(!affectedFilters.length) {
+      return [];
+    }
+
     return [`npm run lint ${affectedFilters.join(' ')}`];
   },
   '**/*.{t,j}s?(x)': (files) => {
     const affectedFilters = getTurboAffectedFilters(files);
+
+    if(!affectedFilters.length) {
+      return [];
+    }
 
     return ['npm run type-check', `npm run test ${affectedFilters.join(' ')}`];
   },
