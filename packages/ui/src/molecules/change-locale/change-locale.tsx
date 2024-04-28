@@ -22,6 +22,8 @@ export function ChangeLocale({
 }: ChangeLocaleProps) {
   const newLocale = locales.find((l) => l !== locale);
 
+  if (!newLocale) return null;
+
   return (
     <Button
       aria-label={`Change locale to ${newLocale}`}

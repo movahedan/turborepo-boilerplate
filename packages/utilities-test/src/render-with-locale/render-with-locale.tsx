@@ -25,8 +25,8 @@ export const renderWithLocale: RenderWithLocale = (
 ) => {
   const wrapper: RenderOptions['wrapper'] = ({ children }) => (
     <NextIntlClientProvider
-      locale={nextIntlClientProviderProps.locale || defaultLocale}
-      messages={nextIntlClientProviderProps.messages || {}}
+      locale={nextIntlClientProviderProps.locale ?? defaultLocale}
+      messages={nextIntlClientProviderProps.messages ?? {}}
     >
       {children}
     </NextIntlClientProvider>
