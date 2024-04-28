@@ -10,8 +10,6 @@
     "lint": "eslint . --max-warnings 0",
     "lint-locale": "npm exec -- @inlang/cli lint --project project.inlang",
     "test": "jest --color",
-    "storybook": "storybook dev -p 6201 --quiet",
-    "storybook-build": "storybook build -o dist/build/storybook",
     "update-dependencies": "npm exec npm-check-updates -- -u"
   },
   "dependencies": {

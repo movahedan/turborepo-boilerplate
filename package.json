@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "prepare": "husky",
-    "build": "turbo build --no-cache --",
+    "build": "turbo build --",
     "dev": "turbo dev --",
     "lint": "turbo lint --",
     "lint-locale": "turbo lint-locale --",

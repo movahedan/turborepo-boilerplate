@@ -1,5 +1,14 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["."],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"]
+  "include": [".", "./dist/build/types/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.stories.tsx"
+  ],
+  "compilerOptions": {
+    "plugins": [{ "name": "next" }],
+  }
 }

@@ -13,9 +13,10 @@ const withBundleAnalyzer = createBundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: './dist/build/.next',
+  distDir: './dist/build',
   swcMinify: true,
   reactStrictMode: true,
+  typescript: { tsconfigPath: './tsconfig.prod.json' },
 };
 
 const composedConfigs = withNextIntl(nextConfig);

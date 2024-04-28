@@ -1,8 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "noEmit": true
-  },
-  "include": [".", ".eslintrc.js", ".storybook/**/*", "**.json", "public/locales/**.json"],
-  "exclude": ["node_modules", "dist", ".turbo", ".next"]
+  "include": ["src/**/*", "jest.config.ts", "jest.setup.ts"],
+  "exclude": ["node_modules", "dist", ".turbo"]
 }

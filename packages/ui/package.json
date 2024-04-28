@@ -7,13 +7,13 @@
     "./get-messages": "./src/get-messages.ts"
   },
   "scripts": {
-    "build": "tsup",
+    "type-check": "tsc --project ./tsconfig.json",
     "lint": "eslint . --max-warnings 0",
     "lint-locale": "npm exec -- @inlang/cli lint --project project.inlang",
     "test": "jest --color",
-    "type-check": "tsc --project ./tsconfig.json",
+    "build": "tsup --onSuccess 'tsc --project tsconfig.prod.json'",
     "storybook": "storybook dev -p 6200 --quiet",
-    "storybook-build": "storybook build -o dist/build/storybook",
+    "storybook-build": "storybook build -o dist/storybook",
     "generate:component": "turbo gen react-component",
     "update-dependencies": "npm exec npm-check-updates -- -u"
   },

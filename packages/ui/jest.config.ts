@@ -4,7 +4,10 @@ import type { Config } from 'jest';
 
 const jestConfig: Config = {
   ...jestConfigJsdom,
-  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.stories.tsx'],
+  collectCoverageFrom: [
+    ...(jestConfigJsdom.collectCoverageFrom ?? []),
+    '!src/**/*.stories.tsx',
+  ],
 };
 
 export default jestConfig;

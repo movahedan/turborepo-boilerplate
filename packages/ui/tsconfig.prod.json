@@ -1,9 +1,17 @@
 {
-  "extends": "@repo/config-typescript/react-library.json",
-  "include": ["."],
-  "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.test.tsx", "src/**/*.stories.tsx"],
+  "extends": "./tsconfig.json",
+  "include": ["public/**/*", "src/**/*"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.stories.tsx",
+    "src/**/*.mock.ts"
+  ],
   "compilerOptions": {
-    "declaration": false,
-    "declarationMap": false
+    "noEmit": false,
+    "rootDir": ".",
+    "outDir": "dist/tsc"
   }
 }
