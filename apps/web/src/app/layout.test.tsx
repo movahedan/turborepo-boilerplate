@@ -30,9 +30,12 @@ describe('generateViewport', () => {
 });
 
 describe('generateMetadata', () => {
+  const title = 'my-clicky-game';
+  const favIcon = '/icons/favicon.ico';
+
   const expectedMetadata = {
-    title: 'my-clicky-game',
-    description: 'my-clicky-game',
+    title,
+    description: title,
     metadataBase: undefined,
     alternates: {
       canonical: '/',
@@ -44,13 +47,13 @@ describe('generateMetadata', () => {
     openGraph: {
       type: 'website',
       locale: 'en_IE',
-      siteName: 'my-clicky-game',
-      images: '/icons/favicon.ico',
+      siteName: title,
+      images: favIcon,
     },
     manifest: '/manifest.json',
     appleWebApp: {
       capable: true,
-      title: 'my-clicky-game',
+      title,
       statusBarStyle: 'black-translucent',
     },
     robots: {
@@ -58,11 +61,11 @@ describe('generateMetadata', () => {
       follow: true,
     },
     icons: [
-      { rel: 'shortcut icon', url: '/icons/favicon.ico' },
+      { rel: 'shortcut icon', url: favIcon },
       {
         rel: 'apple-touch-icon',
         sizes: '180x180',
-        url: '/icons/favicon.ico',
+        url: favIcon,
       },
       {
         rel: 'icon',

@@ -38,6 +38,8 @@ export function generateViewport() {
 export function generateMetadata(): Metadata {
   const websiteName = 'my-clicky-game';
   const websiteDescription = 'my-clicky-game';
+  const favicon = '/icons/favicon.ico';
+
   let websiteUrl;
   const url = envs().NEXT_PUBLIC_BASE_URL;
   if (url) {
@@ -56,7 +58,7 @@ export function generateMetadata(): Metadata {
       type: 'website',
       locale: 'en_IE',
       siteName: websiteName,
-      images: '/icons/favicon.ico',
+      images: favicon,
     },
     manifest: '/manifest.json',
     appleWebApp: {
@@ -69,8 +71,8 @@ export function generateMetadata(): Metadata {
       follow: true,
     },
     icons: [
-      { rel: 'shortcut icon', url: '/icons/favicon.ico' },
-      { rel: 'apple-touch-icon', sizes: '180x180', url: '/icons/favicon.ico' },
+      { rel: 'shortcut icon', url: favicon },
+      { rel: 'apple-touch-icon', sizes: '180x180', url: favicon },
       {
         rel: 'icon',
         type: 'image/png',

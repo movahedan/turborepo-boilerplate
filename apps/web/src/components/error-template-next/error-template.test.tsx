@@ -23,9 +23,10 @@ describe('<ErrorTemplateNext />', () => {
   jest.spyOn(console, 'error').mockImplementation(() => {});
   const spyConsole = jest.spyOn(console, 'info').mockImplementation(() => {});
 
+  const testErrorMessage = 'test error message';
   const renderComponent = (props: Partial<ErrorTemplateProps> = {}) =>
     renderWithLocale(
-      <ErrorTemplateNext error="test error message" {...props} />,
+      <ErrorTemplateNext error={testErrorMessage} {...props} />,
       {},
       {
         locale: 'en',
@@ -43,7 +44,7 @@ describe('<ErrorTemplateNext />', () => {
   test('should render error message', () => {
     renderComponent();
 
-    expect(screen.getByText('test error message')).toBeInTheDocument();
+    expect(screen.getByText(testErrorMessage)).toBeInTheDocument();
   });
 
   test('should render translated error message', () => {
@@ -54,7 +55,7 @@ describe('<ErrorTemplateNext />', () => {
 
   test('should call reset function on button click', () => {
     const resetMock = jest.fn();
-    renderComponent({ error: 'test error message', reset: resetMock });
+    renderComponent({ error: testErrorMessage, reset: resetMock });
 
     fireEvent.click(screen.getByText('Try again'));
 
@@ -62,7 +63,7 @@ describe('<ErrorTemplateNext />', () => {
   });
 
   test('should call router refresh on reload button click', () => {
-    renderComponent({ error: 'test error message' });
+    renderComponent({ error: testErrorMessage });
 
     fireEvent.click(screen.getByText('Reload'));
     expect(spyConsole).toHaveBeenCalledTimes(1);
