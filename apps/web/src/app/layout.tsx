@@ -11,9 +11,9 @@ import type { ReactNode } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export interface RootLayoutProps {
+export type RootLayoutProps = Readonly<{
   children: ReactNode;
-}
+}>;
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (

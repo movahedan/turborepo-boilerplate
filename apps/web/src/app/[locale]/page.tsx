@@ -12,9 +12,9 @@ import { Button } from '@repo/ui/atoms';
 
 import type { Locales } from '@repo/utilities/locales';
 
-export interface HomePageProps {
+export type HomePageProps = Readonly<{
   params: { locale: Locales };
-}
+}>;
 
 export default async function HomePage({ params: { locale } }: HomePageProps) {
   unstableSetRequestLocale(locale as string);
