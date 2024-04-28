@@ -1,6 +1,9 @@
 {
   "extends": "./tsconfig.json",
-  "include": [".", "./dist/build/types/**/*.ts"],
+  "include": [
+    ".",
+    "./dist/build/.next/types/**/*.ts",
+  ],
   "exclude": [
     "node_modules",
     "dist",
@@ -9,6 +12,10 @@
     "**/*.stories.tsx"
   ],
   "compilerOptions": {
-    "plugins": [{ "name": "next" }],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   }
 }

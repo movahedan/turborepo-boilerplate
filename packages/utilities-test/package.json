@@ -8,10 +8,8 @@
     "type-check": "tsc -p tsconfig.json"
   },
   "devDependencies": {
-    "@repo/config-eslint": "*",
-    "@repo/config-jest": "*",
-    "@repo/config-storybook": "*",
-    "@repo/config-tailwind": "*",
-    "@repo/config-typescript": "*"
+    "@repo/config-eslint": "0.0.0",
+    "@repo/config-jest": "0.0.0",
+    "@repo/config-typescript": "0.0.0"
   }
 }

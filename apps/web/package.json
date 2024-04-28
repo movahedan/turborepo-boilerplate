@@ -13,15 +13,15 @@
     "update-dependencies": "npm exec npm-check-updates -- -u"
   },
   "dependencies": {
-    "@repo/ui": "*",
-    "@repo/utilities": "*"
+    "@repo/ui": "0.0.0",
+    "@repo/utilities": "0.0.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "14.2.3",
-    "@repo/config-eslint": "*",
-    "@repo/config-jest": "*",
-    "@repo/config-tailwind": "*",
-    "@repo/config-typescript": "*",
-    "@repo/utilities-test": "*"
+    "@repo/config-eslint": "0.0.0",
+    "@repo/config-jest": "0.0.0",
+    "@repo/config-tailwind": "0.0.0",
+    "@repo/config-typescript": "0.0.0",
+    "@repo/utilities-test": "0.0.0"
   }
 }

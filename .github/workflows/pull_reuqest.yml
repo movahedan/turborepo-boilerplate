@@ -8,11 +8,11 @@ env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
-  FILE_PATH_WEB_BUILD: ./apps/web/dist/build
+  FILE_PATH_WEB_BUILD: ./apps/web/dist/build/.next
   FILE_PATH_UI_BUILD: ./packages/ui/dist/storybook
 
   CACHE_PATHS_BUILD: |
-    ./apps/web/dist/build
+    ./apps/web/dist/build/.next
     ./packages/ui/dist/storybook
   CACHE_KEY_BUILD: build-${{ github.sha }}-${{ github.ref_type }}
   CACHE_RESTORE_KEYS: build-
