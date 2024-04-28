@@ -8,9 +8,9 @@
     "start": "next start",
     "type-check": "tsc --project ./tsconfig.json",
     "lint": "eslint . --max-warnings 0",
-    "lint-locale": "npm exec --yes -- @inlang/cli lint --project project.inlang",
+    "lint-locale": "npx --yes -- @inlang/cli lint --project project.inlang",
     "test": "jest --color",
-    "update-dependencies": "npm exec npm-check-updates -- -u"
+    "update-dependencies": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
     "@repo/ui": "0.0.0",

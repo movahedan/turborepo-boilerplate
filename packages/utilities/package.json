@@ -10,7 +10,7 @@
     "lint": "eslint . --max-warnings 0",
     "test": "jest --color",
     "build": "tsup --onSuccess 'tsc --project tsconfig.prod.json'",
-    "update-dependencies": "npm exec npm-check-updates -- -u"
+    "update-dependencies": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
     "tailwind-merge": "2.3.0"

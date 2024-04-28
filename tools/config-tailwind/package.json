@@ -7,7 +7,7 @@
     "postcss.config.js"
   ],
   "scripts": {
-    "update-dependencies": "npm exec npm-check-updates -- -u"
+    "update-dependencies": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {
     "@tailwindcss/forms": "0.5.7",

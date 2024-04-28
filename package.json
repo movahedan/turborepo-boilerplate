@@ -3,12 +3,13 @@
   "private": true,
   "engines": {
     "node": ">=20.12.2",
-    "npm": ">=10.2.4"
+    "yarn": ">=1.22.21"
   },
   "os": [
     "darwin",
     "linux"
   ],
+  "packageManager": "yarn@1.22.21",
   "workspaces": [
     "apps/*",
     "packages/*",
@@ -16,19 +17,19 @@
   ],
   "scripts": {
     "prepare": "husky",
-    "build": "turbo build --",
-    "dev": "turbo dev --",
-    "lint": "turbo lint --",
-    "lint-locale": "turbo lint-locale --",
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "lint-locale": "turbo lint-locale",
     "lint-staged": "lint-staged --relative --verbose",
     "lint-commit": "commitlint",
     "lint-branch": "branch-name-lint",
-    "test": "turbo test --",
-    "type-check": "turbo type-check --",
+    "test": "turbo test",
+    "type-check": "turbo type-check",
     "storybook": "turbo storybook",
     "storybook-build": "turbo storybook-build",
     "clean": "npm exec --workspaces -c 'rm -rf node_modules .next .turbo dist' && rm -rf node_modules",
-    "update-dependencies": "turbo update-dependencies && npm exec npm-check-updates --  -u"
+    "update-dependencies": "turbo update-dependencies && yarn upgrade-interactive --latest"
   },
   "optionalDependencies": {
     "fsevents": "2.3.2"
@@ -77,7 +78,6 @@
     "eslint-plugin-tailwindcss": "3.15.1",
     "husky": "9.0.11",
     "lint-staged": "15.2.2",
-    "npm-check-updates": "16.14.20",
     "postcss": "8.4.38",
     "prettier": "3.2.5",
     "storybook": "8.0.9",
