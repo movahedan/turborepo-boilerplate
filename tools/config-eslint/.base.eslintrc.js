@@ -14,13 +14,14 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['only-warn'],
+  plugins: ['only-warn', 'sonarjs'],
   extends: [
     'eslint:recommended',
     'plugin:prettier/recommended',
     require.resolve('@vercel/style-guide/eslint/typescript'),
     require.resolve('@vercel/style-guide/eslint/node'),
     'eslint-config-turbo',
+    'plugin:sonarjs/recommended',
     './.i18n.eslintrc.js',
     './.base.envs.eslintrc.js',
     './.base.import.eslintrc.js',
@@ -40,7 +41,7 @@ module.exports = {
     ],
     // off rules
     '@typescript-eslint/explicit-function-return-type': 'off',
-    'import/no-extraneous-dependencies': 'off'
+    'import/no-extraneous-dependencies': 'off',
   },
   overrides: [
     {
