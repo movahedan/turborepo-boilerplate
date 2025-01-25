@@ -1,3 +1,0 @@
-yarn lint-branch branchlint.json &&\
-  yarn build &&\
-  yarn lint-locale

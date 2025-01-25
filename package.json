@@ -1,88 +1,19 @@
 {
-  "name": "my-clicky-game",
+  "name": "turborepo-boilerplate",
   "private": true,
-  "engines": {
-    "node": ">=20.12.2",
-    "yarn": ">=1.22.21"
-  },
-  "os": [
-    "darwin",
-    "linux"
-  ],
-  "packageManager": "yarn@1.22.21",
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "tools/*"
-  ],
   "scripts": {
-    "prepare": "husky",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "lint-locale": "turbo lint-locale ",
-    "lint-staged": "lint-staged --relative --verbose",
-    "lint-commit": "commitlint",
-    "lint-branch": "branch-name-lint",
-    "test": "turbo test",
-    "test-coverage": "turbo test-coverage",
-    "type-check": "turbo type-check",
-    "storybook": "turbo storybook",
-    "storybook-build": "turbo storybook-build",
-    "clean": "npm exec --workspaces -c 'rm -rf node_modules .next .turbo dist' && rm -rf node_modules",
-    "update-dependencies": "turbo update-dependencies && yarn upgrade-interactive --latest"
-  },
-  "dependencies": {
-    "next": "14.2.3",
-    "next-intl": "3.12.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@commitlint/cli": "19.3.0",
-    "@commitlint/config-conventional": "19.2.2",
-    "@inlang/cli": "^2.15.3",
-    "@next/eslint-plugin-next": "14.2.3",
-    "@storybook/addon-essentials": "8.0.9",
-    "@storybook/addon-webpack5-compiler-swc": "1.0.2",
-    "@storybook/manager-api": "8.0.9",
-    "@storybook/nextjs": "8.0.9",
-    "@storybook/react": "8.0.9",
-    "@storybook/theming": "8.0.9",
-    "@testing-library/jest-dom": "6.4.2",
-    "@testing-library/react": "15.0.5",
-    "@testing-library/user-event": "14.5.2",
-    "@types/node": "20.12.7",
-    "@types/react": "18.3.1",
-    "@types/react-dom": "18.3.0",
-    "@typescript-eslint/eslint-plugin": "7.7.1",
-    "@typescript-eslint/parser": "7.7.1",
-    "@vercel/style-guide": "6.0.0",
-    "autoprefixer": "10.4.19",
-    "branch-name-lint": "2.1.1",
-    "commitizen": "4.3.0",
-    "eslint": "8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-config-turbo": "1.13.3",
-    "eslint-plugin-i18n-translated": "1.0.0",
-    "eslint-plugin-i18next": "6.0.3",
-    "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-jest-dom": "5.4.0",
-    "eslint-plugin-json": "3.1.0",
-    "eslint-plugin-jsx-a11y": "6.8.0",
-    "eslint-plugin-only-warn": "1.1.0",
-    "eslint-plugin-prettier": "5.1.3",
-    "eslint-plugin-sonarjs": "^0.25.1",
-    "eslint-plugin-tailwindcss": "3.15.1",
-    "husky": "9.0.11",
-    "lint-staged": "15.2.2",
-    "postcss": "8.4.38",
-    "prettier": "3.2.5",
-    "storybook": "8.0.9",
-    "ts-jest": "29.1.2",
-    "ts-node": "10.9.2",
-    "tsup": "8.0.2",
-    "turbo": "1.13.3",
-    "typescript": "5.4.5"
+    "prettier": "^3.4.2",
+    "turbo": "^2.3.4",
+    "typescript": "5.7.3"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
   }
 }
