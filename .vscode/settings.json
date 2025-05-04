@@ -2,6 +2,19 @@
   "eslint.workingDirectories": [
     {
       "mode": "auto"
+    },
+    {
+      "mode": "location",
+      "pattern": "frontend/apps/*/",
+    },
+    {
+      "mode": "location",
+      "pattern": "frontend/packages/*/",
     }
-  ]
+  ],
+  
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
 }
